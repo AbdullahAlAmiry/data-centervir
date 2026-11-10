@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اختبار داتا سنتر - Data Center Virtualization MCQ</title>
+    <title>WSP (AI423) - Interactive Question Bank</title>
     <style>
         :root {
             --bg-color: #f4f7f6;
             --card-bg: #ffffff;
-            --primary: #2c3e50;
-            --accent: #3498db;
+            --primary: #1f4e79;
+            --accent: #2980b9;
             --correct-bg: #d4edda;
             --correct-border: #28a745;
             --correct-text: #155724;
@@ -17,7 +17,7 @@
             --wrong-border: #dc3545;
             --wrong-text: #721c24;
             --text-main: #2b2b2b;
-            --text-muted: #6c757d;
+            --text-muted: #555555;
         }
 
         body {
@@ -25,7 +25,7 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             margin: 0;
-            padding: 20px;
+            padding: 15px;
             direction: rtl;
         }
 
@@ -37,21 +37,22 @@
         header {
             background: var(--primary);
             color: #fff;
-            padding: 25px;
+            padding: 20px 25px;
             border-radius: 12px;
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         header h1 {
             margin: 0 0 10px 0;
-            font-size: 1.8rem;
+            font-size: 1.7rem;
         }
 
         header p {
             margin: 0;
             opacity: 0.9;
+            font-size: 0.95rem;
         }
 
         .score-board {
@@ -59,9 +60,9 @@
             top: 10px;
             z-index: 100;
             background: #fff;
-            padding: 15px 25px;
+            padding: 12px 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -69,40 +70,49 @@
             border-right: 5px solid var(--accent);
         }
 
-        .score-board h3 {
-            margin: 0;
-            font-size: 1.2rem;
+        .score-board div {
+            font-size: 1.05rem;
+            font-weight: bold;
+        }
+
+        .quiz-section-title {
+            background: #e2e8f0;
+            padding: 10px 18px;
+            border-radius: 8px;
+            margin: 30px 0 20px 0;
+            font-size: 1.25rem;
+            color: var(--primary);
+            border-right: 4px solid var(--primary);
         }
 
         .question-card {
             background: var(--card-bg);
             border-radius: 12px;
-            padding: 20px 25px;
-            margin-bottom: 25px;
+            padding: 20px;
+            margin-bottom: 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
         }
 
         .question-num {
             font-weight: bold;
             color: var(--accent);
             font-size: 0.95rem;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
 
         .question-text-en {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 600;
             color: #1a252f;
             direction: ltr;
             text-align: left;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
 
         .question-text-ar {
-            font-size: 1.05rem;
+            font-size: 0.98rem;
             color: #34495e;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             font-weight: 500;
         }
 
@@ -115,13 +125,13 @@
         .option-item {
             border: 2px solid #e9ecef;
             border-radius: 8px;
-            padding: 12px 16px;
-            margin-bottom: 10px;
+            padding: 10px 14px;
+            margin-bottom: 8px;
             cursor: pointer;
             transition: all 0.2s ease;
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 3px;
         }
 
         .option-item:hover:not(.disabled) {
@@ -141,10 +151,9 @@
 
         .opt-ar {
             color: var(--text-muted);
-            font-size: 0.92rem;
+            font-size: 0.88rem;
         }
 
-        /* Result Styles */
         .option-item.correct {
             background-color: var(--correct-bg) !important;
             border-color: var(--correct-border) !important;
@@ -159,12 +168,12 @@
 
         .explanation {
             display: none;
-            margin-top: 15px;
-            padding: 15px;
+            margin-top: 14px;
+            padding: 12px 15px;
             background-color: #eef7fe;
             border-right: 4px solid var(--accent);
             border-radius: 6px;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             line-height: 1.6;
         }
 
@@ -172,28 +181,45 @@
             color: #1e5799;
         }
 
+        /* Short Answer Styling */
+        .essay-answer {
+            display: none;
+            margin-top: 12px;
+            padding: 14px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            direction: ltr;
+            text-align: left;
+            font-family: monospace;
+            white-space: pre-wrap;
+            font-size: 0.95rem;
+        }
+
+        .btn-toggle {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 7px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+
         .btn-reset {
             background-color: var(--accent);
             color: white;
             border: none;
-            padding: 8px 18px;
+            padding: 7px 16px;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: bold;
         }
 
         .btn-reset:hover {
-            background-color: #2980b9;
-        }
-
-        .quiz-section-title {
-            background: #e2e8f0;
-            padding: 10px 18px;
-            border-radius: 8px;
-            margin: 30px 0 20px 0;
-            font-size: 1.3rem;
-            color: var(--primary);
+            background-color: #1a5276;
         }
     </style>
 </head>
@@ -201,8 +227,8 @@
 
 <div class="container">
     <header>
-        <h1>Data Center Virtualization (Al421) - Multiple Choice Questions</h1>
-        <p>أسئلة الاختيار من متعدد شاملة الكويز الأول والثاني مع التقييم الفوري والترجمة والشرح</p>
+        <h1>Wireless Sensor Protocols & Programming (AI423)</h1>
+        <p>بنك أسئلة واختبارات تفاعلي لـ (Quiz 1 - Quiz 2 - Quiz 3) مع التصحيح الفوري والشرح بالعربية</p>
     </header>
 
     <div class="score-board">
@@ -217,478 +243,580 @@
 </div>
 
 <script>
-const quizData = [
-    // Quiz 1 Questions
+const mcqQuestions = [
+    // --- Quiz 1 MCQs ---
     {
-        quiz: "Quiz 1",
-        qEn: "In data center networks, private VLANs are used for:",
-        qAr: "في شبكات مراكز البيانات، تُستخدم الشبكات المحلية التخيلية الخاصة (Private VLANs) لـ:",
+        quiz: "Quiz 1 - MCQs",
+        qEn: "What is the primary function of a controller in a WSN node?",
+        qAr: "ما هي الوظيفة الأساسية لوحدة التحكم (Controller) في عقدة شبكة الحساسات اللاسلكية؟",
         options: [
-            { en: "A. Network portioning into general segments.", ar: "أ. تقسيم الشبكة إلى أجزاء عامة." },
-            { en: "B. Routing and forwarding in servers.", ar: "ب. التوجيه وإعادة التوجيه في الخوادم." },
-            { en: "C. Secure the fiber channels.", ar: "ج. تأمين القنوات الألياف الضوئية." },
-            { en: "D. Network portioning in the same VLAN.", ar: "د. تقسيم الشبكة داخل نفس الـ VLAN." }
+            { en: "A. Power generation", ar: "أ. توليد الطاقة" },
+            { en: "B. Wireless transmission", ar: "ب. الإرسال اللاسلكي" },
+            { en: "C. Data processing", ar: "ج. معالجة البيانات (Data processing)" },
+            { en: "D. Data storage", ar: "د. تخزين البيانات" }
         ],
-        correct: 3,
-        explanation: "الـ Private VLANs تتيح تقسيم الشبكة وعزل الأجهزة عن بعضها البعض داخل نطاق نفس الـ VLAN (Same VLAN) لزيادة الأمان دون الحاجة لإنشاء VLANs متعددة."
+        correct: 2,
+        explanation: "وحدة التحكم (Controller/Microcontroller) مسؤولة بشكل أساسي عن معالجة وتجهيز البيانات المستلمة من الحساسات وإدارة عمل العقدة."
     },
     {
-        quiz: "Quiz 1",
-        qEn: "What is a hypervisor?",
-        qAr: "ما هو الموجه الافتراضي (Hypervisor)؟",
+        quiz: "Quiz 1 - MCQs",
+        qEn: "What is the main focus of network architecture in WSNs?",
+        qAr: "ما هو التركيز الرئيسي لمعمارية الشبكة (Network architecture) في WSNs؟",
         options: [
-            { en: "A. A type of virtual machine", ar: "أ. نوع من الأجهزة الافتراضية." },
-            { en: "B. Software that creates a virtualization layer allowing multiple guest operating systems to run on hardware", ar: "ب. برنامج ينشئ طبقة افتراضية تتيح لتشغيل عدة أنظمة تشغيل ضيفة على المكونات المادية." },
-            { en: "C. An operating system for virtual machines", ar: "ج. نظام تشغيل مخصص للأجهزة الافتراضية." },
-            { en: "D. A physical component of a computer system", ar: "د. مكون مادي في جهاز الكمبيوتر." }
+            { en: "A. Individual node design", ar: "أ. تصميم العقد الفردية" },
+            { en: "B. Power supply optimization", ar: "ب. تحسين مزود الطاقة" },
+            { en: "C. Connecting nodes to form networks", ar: "ج. ربط وتوصيل العقد لتشكيل شبكات متكاملة" },
+            { en: "D. Sensor calibration", ar: "د. معايرة الحساسات" }
+        ],
+        correct: 2,
+        explanation: "معمارية الشبكة تُعنى بطريقة ربط وتنسيق التواصل بين العقد المتعددة لتشكيل بنية شبكية مترابطة."
+    },
+    {
+        quiz: "Quiz 1 - MCQs",
+        qEn: "What is the primary function of a flame sensor?",
+        qAr: "ما هي الوظيفة الأساسية لحساس اللهب (Flame sensor)؟",
+        options: [
+            { en: "A. Measure humidity", ar: "أ. قياس الرطوبة" },
+            { en: "B. Control motor speed", ar: "ب. التحكم في سرعة المحرك" },
+            { en: "C. Measure temperature", ar: "ج. قياس درجة الحرارة" },
+            { en: "D. Detect the presence of flame or fire", ar: "د. اكتشاف وجود اللهب أو الحريق" }
+        ],
+        correct: 3,
+        explanation: "حساس اللهب مصمم للكشف عن الإشعاع الضوئي الصادر من الحرائق واللهب (خاصة الأشعة تحت الحمراء)."
+    },
+    {
+        quiz: "Quiz 1 - MCQs",
+        qEn: "What is the primary advantage of distributed organization in WSNs?",
+        qAr: "ما هي الميزة الأساسية للتنظيم الموزع (Distributed organization) في شبكات WSNs؟",
+        options: [
+            { en: "A. Higher transmission ranges", ar: "أ. نطاقات إرسال أعلى" },
+            { en: "B. Simpler node hardware", ar: "ب. عتاد أسهل للعقدة" },
+            { en: "C. Single point of control", ar: "ج. نقطة تحكم واحدة" },
+            { en: "D. Improved fault tolerance", ar: "د. تحسين تحمل الأعطال (Fault tolerance)" }
+        ],
+        correct: 3,
+        explanation: "التنظيم الموزع يتفادى وجود نقطة فشل واحدة (Single point of failure)، مما يرفع كفاءة تحمل الأعطال في الشبكة."
+    },
+    {
+        quiz: "Quiz 1 - MCQs",
+        qEn: "Network lifetime can be measured by:",
+        qAr: "يمكن قياس عمر الشبكة (Network lifetime) من خلال:",
+        options: [
+            { en: "A. Average battery level", ar: "أ. متوسط مستوى البطارية" },
+            { en: "B. Time to first node failure", ar: "ب. الوقت حتى نفاد/تعطل أول عقدة (Time to first node failure)" },
+            { en: "C. Number of nodes", ar: "ج. عدد العقد" },
+            { en: "D. Total data transmitted", ar: "د. إجمالي البيانات المرسلة" }
         ],
         correct: 1,
-        explanation: "الـ Hypervisor هو طبقة البرمجيات المسؤولة عن إدارة المكونات المادية وتقسيمها لتشغيل عدة أنظمة تشغيل (Guest OS) بالتوازي."
+        explanation: "أحد المقاييس الشائعة والمهمة لعمر الشبكة هو الفترة الزمنية حتى انقطاع أو استهلاك بطارية أول عقدة فيها."
     },
     {
-        quiz: "Quiz 1",
-        qEn: "Which storage option is best suited for long-term archival and backup?",
-        qAr: "أي خيارات التخزين التالية تعتبر الأفضل للأرشفة والنسخ الاحتياطي طويل الأجل؟",
+        quiz: "Quiz 1 - MCQs",
+        qEn: "Scalability in WSNs must consider:",
+        qAr: "قابلة التوسع (Scalability) في شبكات WSNs يجب أن تأخذ بعين الاعتبار:",
         options: [
-            { en: "A. Optical Disc", ar: "أ. القرص الضوئي (Optical Disc)." },
-            { en: "B. Disk Drive", ar: "ب. محرك الأقراص (Hard Disk Drive)." },
-            { en: "C. Magnetic Tape", ar: "ج. الشريط المغناطيسي (Magnetic Tape)." },
-            { en: "D. Flash Drive", ar: "د. الذاكرة الوميضية (Flash Drive)." }
+            { en: "A. 10s to 1000s of nodes", ar: "أ. التوسع من عشرات إلى آلاف العقد" },
+            { en: "B. Only static networks", ar: "ب. الشبكات الثابتة فقط" },
+            { en: "C. Single-hop communication", ar: "ج. الاتصال ثنائي القفزة الواحدة" },
+            { en: "D. Only small networks", ar: "د. الشبكات الصغيرة فقط" }
+        ],
+        correct: 0,
+        explanation: "بروتوكولات WSN يجب أن تكون قادرة على العمل بكفاءة سواء مع عدد قليل (عشرات) أو ضخم (آلاف) من الحساسات."
+    },
+    {
+        quiz: "Quiz 1 - MCQs",
+        qEn: "What does an ultrasonic sensor measure?",
+        qAr: "ما الذي يقيسه حساس الموجات فوق الصوتية (Ultrasonic sensor)؟",
+        options: [
+            { en: "A. Temperature", ar: "أ. درجة الحرارة" },
+            { en: "B. Light intensity", ar: "ب. شدة الإضاءة" },
+            { en: "C. Motion", ar: "ج. الحركة" },
+            { en: "D. Distance", ar: "د. المسافة (Distance)" }
+        ],
+        correct: 3,
+        explanation: "حساس الموجات فوق الصوتية يقيس المسافة عن طريق حساب زمن إرسال واستقبال ارتداد الموجة الصوتية."
+    },
+    {
+        quiz: "Quiz 1 - MCQs",
+        qEn: "Which sensor is best for measuring the distance of an object in a dark environment without physical contact?",
+        qAr: "أي حساس هو الأفضل لقياس مسافة جسم في بيئة مظلمة دون تلامس مادي؟",
+        options: [
+            { en: "A. PIR sensor", ar: "أ. حساس PIR" },
+            { en: "B. Tilt sensor", ar: "ب. حساس الميلان" },
+            { en: "C. Ultrasonic sensor", ar: "ج. حساس الموجات فوق الصوتية (Ultrasonic sensor)" },
+            { en: "D. Flame sensor", ar: "د. حساس اللهب" }
         ],
         correct: 2,
-        explanation: "الأشرطة المغناطيسية (Magnetic Tapes) تمنح تكلفة منخفضة جداً وسعة عالية وعمراً افتراضياً طويلاً مما يجعلها الأفضل للأرشيف طويل الأمد."
+        explanation: "حساس Ultrasonic يعتمد على الموجات الصوتية وليس الضوء، فيعمل في الظلام التام ودون الحاجة لتلامس مادي."
     },
     {
-        quiz: "Quiz 1",
-        qEn: "What is VirtualBox used for?",
-        qAr: "فيما يُستخدم برنامج VirtualBox؟",
+        quiz: "Quiz 1 - MCQs",
+        qEn: "Which sensor can detect a fire even in smoky conditions where visible light is blocked?",
+        qAr: "أي حساس يمكنه اكتشاف الحريق حتى في ظروف الدخان حيث يتم حجب الضوء المرئي؟",
         options: [
-            { en: "A. Designing websites", ar: "أ. تصميم المواقع." },
-            { en: "B. Creating virtual machines", ar: "ب. إنشاء وإدارة الأجهزة الافتراضية (Virtual Machines)." },
-            { en: "C. Coding in Python", ar: "ج. كتابة أكواد بايثون." },
-            { en: "D. Media", ar: "د. تشغيل وسائط الإعلام." }
+            { en: "A. Ultrasonic sensor", ar: "أ. حساس Ultrasonic" },
+            { en: "B. UV sensor", ar: "ب. حساس الأشعة فوق البنفسجية" },
+            { en: "C. IR reflectance sensor", ar: "ج. حساس انعكاس الأشعة تحت الحمراء" },
+            { en: "D. IR flame sensor", ar: "د. حساس اللهب بالأشعة تحت الحمراء (IR flame sensor)" }
+        ],
+        correct: 3,
+        explanation: "حساس IR Flame يخترق الدخان لأن أطوال موجات الأشعة تحت الحمراء تمر عبر جزيئات الدخان بكفاءة عكس الضوء المرئي."
+    },
+    {
+        quiz: "Quiz 1 - MCQs",
+        qEn: "Which component is responsible for wireless communication in a WSN node?",
+        qAr: "أي مكون مسؤول عن الاتصال اللاسلكي داخل عقدة WSN؟",
+        options: [
+            { en: "A. Transceiver", ar: "أ. جهاز الإرسال والاستقبال (Transceiver)" },
+            { en: "B. Sensor", ar: "ب. الحساس" },
+            { en: "C. Battery", ar: "ج. البطارية" },
+            { en: "D. Actuator", ar: "د. المشغل الميكانيكي" }
+        ],
+        correct: 0,
+        explanation: "الـ Transceiver هو المكون المدمج المسؤول عن إرسال واستقبال الإشارات اللاسلكية."
+    },
+    {
+        quiz: "Quiz 1 - MCQs",
+        qEn: "Which frequency is used for WLAN?",
+        qAr: "أي من الترددات التالية يُستخدم لشبكات WLAN (مثل Wi-Fi)؟",
+        options: [
+            { en: "A. 433MHz", ar: "أ. 433 ميغاهرتز" },
+            { en: "B. 2.4GHz", ar: "ب. 2.4 غيغاهرتز (2.4GHz)" },
+            { en: "C. 5.8GHz", ar: "ج. 5.8 غيغاهرتز" },
+            { en: "D. 24GHz", ar: "د. 24 غيغاهرتز" }
         ],
         correct: 1,
-        explanation: "برنامج VirtualBox هو برنامج Hypervisor من النوع الثاني (Type 2) يُستخدم لإنشاء وتتبع الأجهزة الافتراضية."
+        explanation: "تردد 2.4GHz هو التردد المعتمد والأشهر لشبكات WLAN والمعايير مثل IEEE 802.11b/g/n."
     },
     {
-        quiz: "Quiz 1",
-        qEn: "What does RAID stand for?",
-        qAr: "إلام يشير الاختصار RAID؟",
+        quiz: "Quiz 1 - MCQs",
+        qEn: "What distinguishes WSN sinks from sources?",
+        qAr: "ما الذي يميز المصبات (Sinks) عن المصادر (Sources) في WSNs؟",
         options: [
-            { en: "A. Redundant Access to Integrated Disks", ar: "أ. Redundant Access to Integrated Disks" },
-            { en: "B. Random Access of Independent Disks", ar: "ب. Random Access of Independent Disks" },
-            { en: "C. Redundant Array of Independent Disks", ar: "ج. Redundant Array of Independent Disks (مصفوفة فائضة من الأقراص المستقلة)." },
-            { en: "D. Redundant Array of Independent Data", ar: "د. Redundant Array of Independent Data" }
-        ],
-        correct: 2,
-        explanation: "المصطلح العلمي الصحيح لـ RAID هو Redundant Array of Independent Disks."
-    },
-    {
-        quiz: "Quiz 1",
-        qEn: "Which RAID level uses distributed parity?",
-        qAr: "أي مستويات RAID تستخدم التكافؤ الموزع (Distributed Parity)؟",
-        options: [
-            { en: "A. RAID 1", ar: "أ. RAID 1" },
-            { en: "B. RAID 0", ar: "ب. RAID 0" },
-            { en: "C. RAID 5", ar: "ج. RAID 5" },
-            { en: "D. RAID 10", ar: "د. RAID 10" }
-        ],
-        correct: 2,
-        explanation: "مستوى RAID 5 يقوم بتوزيع بيانات التكافؤ (Parity) عبر جميع الأقراص بدلاً من تخصيص قرص واحد فقط لها."
-    },
-    {
-        quiz: "Quiz 1",
-        qEn: "Which RAID method involves writing duplicate data to multiple disks?",
-        qAr: "أي طرق RAID تتضمن كتابة نسخة مكررة من البيانات على أكثر من قرص؟",
-        options: [
-            { en: "A. Blocking", ar: "أ. التجميع (Blocking)." },
-            { en: "B. Parity", ar: "ب. التكافؤ (Parity)." },
-            { en: "C. Striping", ar: "ج. التجزئة (Striping)." },
-            { en: "D. Mirroring", ar: "د. التقرين / التناظر (Mirroring)." }
-        ],
-        correct: 3,
-        explanation: "التناظر (Mirroring) يعتمد على كتابة نفس البيانات طبق الأصل على قرصين أو أكثر لضمان عدم ضياعها في حال تلف أحد الأقراص."
-    },
-    {
-        quiz: "Quiz 1",
-        qEn: "What size is typically recommended for the virtual hard disk?",
-        qAr: "ما هو الحجم الموصى به عادةً للقرص الصلب الافتراضي؟",
-        options: [
-            { en: "A. 2 GB", ar: "أ. 2 غيغابايت" },
-            { en: "B. 8 GB", ar: "ب. 8 غيغابايت" },
-            { en: "C. 20 GB or more", ar: "ج. 20 غيغابايت أو أكثر" },
-            { en: "D. 100 MB", ar: "د. 100 ميغابايت" }
-        ],
-        correct: 2,
-        explanation: "معظم أنظمة التشغيل الحديثة تتطلب حساسية مساحة لا تقل عن 20 غيغابايت لتثبيت النظام والعمل بكفاءة."
-    },
-    {
-        quiz: "Quiz 1",
-        qEn: "Which RAID level is a combination of mirroring and striping?",
-        qAr: "أي مستوى RAID يعتبر مزيجاً بين التناظر (Mirroring) والتجزئة (Striping)؟",
-        options: [
-            { en: "A. RAID 0", ar: "أ. RAID 0" },
-            { en: "B. RAID 1", ar: "ب. RAID 1" },
-            { en: "C. RAID 10", ar: "ج. RAID 10 (أو RAID 1+0)" },
-            { en: "D. RAID 5", ar: "د. RAID 5" }
-        ],
-        correct: 2,
-        explanation: "RAID 10 ينشئ مصفوفة تدمج بين السرعة (Striping من RAID 0) والأمان (Mirroring من RAID 1)."
-    },
-    {
-        quiz: "Quiz 1",
-        qEn: "What is a resource pool?",
-        qAr: "ما هو تجمع الموارد (Resource Pool)؟",
-        options: [
-            { en: "A. A physical storage device", ar: "أ. جهاز تخزين مادي." },
-            { en: "B. A type of hypervisor", ar: "ب. نوع من الموجهات الافتراضية." },
-            { en: "C. A logical abstraction for managing CPU and memory resources", ar: "ج. تجريد منطقي لإدارة وتوزيع موارد المعالج (CPU) والذاكرة (Memory)." },
-            { en: "D. A networking protocol", ar: "د. بروتوكول شبكات." }
-        ],
-        correct: 2,
-        explanation: "تجمع الموارد هو تجميع منطقي للموارد المادية (المعالج والذاكرة) لتسهيل تقسيمها وتخصيصها للأجهزة الافتراضية."
-    },
-    {
-        quiz: "Quiz 1",
-        qEn: "What is virtualization?",
-        qAr: "ما هي المحاكاة الافتراضية (Virtualization)؟",
-        options: [
-            { en: "A. A type of operating system", ar: "أ. نوع من أنظمة التشغيل." },
-            { en: "B. A method to increase physical storage", ar: "ب. طريقة لزيادة مساحة التخزين المادية." },
-            { en: "C. A layer between physical hardware and the OS to create virtual copies of a device", ar: "ج. طبقة بين المكونات المادية ونظام التشغيل لإنشاء نسخ افتراضية من الأجهزة." },
-            { en: "D. The process of creating physical copies of hardware", ar: "د. عملية إنشاء نسخ مادية من الأجهزة." }
-        ],
-        correct: 2,
-        explanation: "المحاكاة الافتراضية تجرد المكونات المادية لتسمح بتشغيل أكثر من بيئة مستقلة فوق نفس العتاد."
-    },
-    {
-        quiz: "Quiz 1",
-        qEn: "What is the role of a hypervisor?",
-        qAr: "ما هو دور الـ Hypervisor؟",
-        options: [
-            { en: "A. To connect multiple physical servers", ar: "أ. ربط عدة خوادم مادية." },
-            { en: "B. To increase the speed of physical hardware", ar: "ب. زيادة سرعة المكونات المادية." },
-            { en: "C. To replace the operating system", ar: "ج. استبدال نظام التشغيل." },
-            { en: "D. To create and manage virtual machines using virtual hardware", ar: "د. إنشاء وإدارة الأجهزة الافتراضية باستخدام عتاد افتراضي." }
-        ],
-        correct: 3,
-        explanation: "الوظيفة الأساسية للـ Hypervisor هي إنشاء وتشغيل وإدارة الـ Virtual Machines وتوزيع الموارد عليها."
-    },
-    {
-        quiz: "Quiz 1",
-        qEn: "In RAID 5, how is parity distributed?",
-        qAr: "في نظام RAID 5، كيف يتم توزيع معلومات التكافؤ (Parity)؟",
-        options: [
-            { en: "A. On a dedicated disk", ar: "أ. على قرص مخصص منفصل." },
-            { en: "B. Only on the first disk", ar: "ب. على القرص الأول فقط." },
-            { en: "C. Only on the last disk", ar: "ج. على القرص الأخير فقط." },
-            { en: "D. Across all disks", ar: "د. موزعة عبر جميع الأقراص." }
-        ],
-        correct: 3,
-        explanation: "يتميز RAID 5 بأنه لا يخصص قرصاً مفرداً لـ Parity (مثل RAID 3 أو 4)، بل يوزعها بالتساوي عبر كافة الأقراص."
-    },
-    {
-        quiz: "Quiz 1",
-        qEn: "Which RAID level is suitable for high-performance, non-critical data?",
-        qAr: "أي مستويات RAID يناسب البيانات غير الحساسة التي تتطلب أدائاً وعالية السرعة؟",
-        options: [
-            { en: "A. RAID 1", ar: "أ. RAID 1" },
-            { en: "B. RAID 5", ar: "ب. RAID 5" },
-            { en: "C. RAID 0", ar: "ج. RAID 0" },
-            { en: "D. none of them", ar: "د. لا شيء مما سبق" }
-        ],
-        correct: 2,
-        explanation: "RAID 0 يوفر أعلى سرعة قراءة وكتابة بفضل التجزئة (Striping)، ولكنه لا يقدم أي حماية للبيانات (Fault Tolerance)."
-    },
-    {
-        quiz: "Quiz 1",
-        qEn: "What is the purpose of storage virtualization?",
-        qAr: "ما هو الهدف من المحاكاة الافتراضية للتخزين (Storage Virtualization)؟",
-        options: [
-            { en: "A. To eliminate the need for hypervisors", ar: "أ. الاستغناء عن الـ Hypervisors." },
-            { en: "B. To manage multiple storage devices as a single unit", ar: "ب. إدارة عدة أجهزة تخزين مادية وحدةً واحدة مجتمعة." },
-            { en: "C. To replace all physical storage devices", ar: "ج. استبدال كافة أجهزة التخزين المادية." },
-            { en: "D. To increases the speed of individual storage devices", ar: "د. زيادة سرعة كل جهاز تخزين على حدة." }
-        ],
-        correct: 1,
-        explanation: "المحاكاة الافتراضية للتخزين تتيح تجميع عدة أجهزة تخزين مادية وإدارتها كمجموعة تخزين واحدة (Single Pool)."
-    },
-    {
-        quiz: "Quiz 1",
-        qEn: "Which of the following is a disadvantage of Magnetic Tapes?",
-        qAr: "أي مما يلي يعتبر من عيوب الأشرطة المغناطيسية (Magnetic Tapes)؟",
-        options: [
-            { en: "A. Sequential access only", ar: "أ. الوصول التسلسلي فقط (Sequential access only)." },
-            { en: "B. High power consumption", ar: "ب. استهلاك مرتفع للطاقة." },
-            { en: "C. Random access", ar: "ج. الوصول العشوائي." },
-            { en: "D. High cost", ar: "د. التكلفة الباهظة." }
+            { en: "A. Sinks request data", ar: "أ. المصبات هي من تطلب البيانات (Sinks request data)" },
+            { en: "B. Sinks are always mobile", ar: "ب. المصبات دائماً متحركة" },
+            { en: "C. Sinks have more power", ar: "ج. المصبات لديها طاقة أعلى دائماً" },
+            { en: "D. Sinks provide data", ar: "د. المصبات توفر البيانات" }
         ],
         correct: 0,
-        explanation: "الوصول للتسجيلات على الشريط يكون بطيئاً لأنه يعتمد على التمرير التسلسلي (Sequential) حتى الوصول لمكان المعلومة."
+        explanation: "العقد المصدرية (Sources) تولد البيانات، بينما المصبات (Sinks) هي المجمعات التي تطلب وتستقبل هذه البيانات."
     },
     {
-        quiz: "Quiz 1",
-        qEn: "What is a benefit of virtualization?",
-        qAr: "ما هي إحدى الفوائد الرئيسية للمحاكاة الافتراضية (Virtualization)؟",
+        quiz: "Quiz 1 - MCQs",
+        qEn: "Data-centric networking emphasizes:",
+        qAr: "الشبكات المتمركزة حول البيانات (Data-centric networking) تركز على:",
         options: [
-            { en: "A. Optimized utilization of IT resources", ar: "أ. الاستغلال الأمثل والأعلى لموارد تكنولوجيا المعلومات." },
-            { en: "B. Reduced flexibility and provisioning time", ar: "ب. تقليل المرونة ووقت الإعداد." },
-            { en: "C. Increased physical hardware requirements", ar: "ج. زيادة المتطلبات المادية للأجهزة." },
-            { en: "D. Higher cost and management complexity", ar: "د. رفع التكاليف وزيادة تعقيد الإدارة." }
-        ],
-        correct: 0,
-        explanation: "المحاكاة الافتراضية تسمح بتشغيل عدة أنظمة على نفس السيرفر، مما يرفع نسبة استغلال العتاد (Resource Utilization) لدرجة قصوى."
-    },
-    {
-        quiz: "Quiz 1",
-        qEn: "What is the minimum number of disks required for RAID 1 (Mirroring)?",
-        qAr: "ما هو الحد الأدنى لعدد الأقراص المطلوبة لتطبيق RAID 1؟",
-        options: [
-            { en: "A. 1", ar: "أ. قرص واحد" },
-            { en: "B. 3", ar: "ب. 3 أقراص" },
-            { en: "C. 4", ar: "ج. 4 أقراص" },
-            { en: "D. 2", ar: "د. قرصان (2)" }
+            { en: "A. Physical MAC addresses", ar: "أ. عناوين MAC المادية" },
+            { en: "B. Node IP addresses", ar: "ب. عناوين IP الخاصة بالعقد" },
+            { en: "C. Geographic coordinates", ar: "ج. الإحداثيات الجغرافية" },
+            { en: "D. Content of data", ar: "د. محتوى البيانات نفسها (Content of data)" }
         ],
         correct: 3,
-        explanation: "RAID 1 يتطلب قرصين على الأقل لنسخ البيانات من القرص الأول إلى القرص الثاني تلقائياً."
+        explanation: "في Data-centric networking، الاهتمام ينصب على طبيعة ومحتوى البيانات ذاتها بدلاً من هوية وعنوان العقدة التراسلية."
     },
     {
-        quiz: "Quiz 1",
-        qEn: "What is the minimum number of disks required for RAID 6?",
-        qAr: "ما هو الحد الأدنى لعدد الأقراص المطلوبة لتطبيق RAID 6؟",
+        quiz: "Quiz 1 - MCQs",
+        qEn: "Why is in-network processing important in WSNs?",
+        qAr: "لماذا تعد المعالجة داخل الشبكة (In-network processing) مهمة في WSNs؟",
         options: [
-            { en: "A. 2", ar: "أ. قرصان" },
-            { en: "B. 3", ar: "ب. 3 أقراص" },
-            { en: "C. 4", ar: "ج. 4 أقراص" },
-            { en: "D. 5", ar: "د. 5 أقراص" }
-        ],
-        correct: 2,
-        explanation: "RAID 6 يحتاج إلى 4 أقراص على الأقل لأنه يستخدم معلومتي تكافؤ مضاعفتين (Dual Parity) لتحمل فشل قرصين متتاليين."
-    },
-    {
-        quiz: "Quiz 1",
-        qEn: "What are the three main components of a data center?",
-        qAr: "ما هي المكونات الثلاثة الرئيسية لمركز البيانات (Data Center)؟",
-        options: [
-            { en: "A. Compute, Storage, Networks", ar: "أ. الحوسبة (Compute)، التخزين (Storage)، والشبكات (Networks)." },
-            { en: "B. Hypervisors, VMs, Containers", ar: "ب. الـ Hypervisors، الـ VMs، والـ Containers." },
-            { en: "C. CPU, GPU, RAM", ar: "ج. المعالج، كارت الشاشة، والذاكرة." },
-            { en: "D. Routers, Switches, Firewalls", ar: "د. الراوترات، السويتشات، وجدران الحماية." }
+            { en: "A. It reduces the amount of data that needs to be transmitted", ar: "أ. تقلل من كمية البيانات التي تطلب إرسالها عبر الشبكة" },
+            { en: "B. It improves signal reception", ar: "ب. تحسن استقبال الإشارة" },
+            { en: "C. It increases processing speed", ar: "ج. تزيد سرعة المعالجة" },
+            { en: "D. It enables better encryption", ar: "د. تمكن من تشفير أفضل" }
         ],
         correct: 0,
-        explanation: "الركائز الثلاث الأساسية لبنية مركز البيانات هي الحوسبة (السيرفرات)، التخزين، والشبكات."
+        explanation: "تجميع ومعالجة البيانات محلياً يقلل حجم التراسل اللاسلكي وهو الجزء الأكثر استهلاكاً للطاقة في العقد."
+    },
+    {
+        quiz: "Quiz 1 - MCQs",
+        qEn: "WSN tunneling allows:",
+        qAr: "تقنية النفق (WSN tunneling) تسمح بـ:",
+        options: [
+            { en: "A. Increased node processing", ar: "أ. زيادة معالجة العقدة" },
+            { en: "B. Reduced aggregation needs", ar: "ب. تقليل الحاجة للتجميع" },
+            { en: "C. Interconnection of remote WSNs", ar: "ج. الربط الشبكي بين شبكات WSNs متباعدة" },
+            { en: "D. Internet replacement of WSNs", ar: "د. استبدال الإنترنت بـ WSNs" }
+        ],
+        correct: 2,
+        explanation: "الـ Tunneling يتيح ربط ونقل حزم البيانات بين شبكات WSN منفصلة جغرافي عبر شبكات أخرى كالإنترنت."
     },
 
-    // Quiz 2 Questions
+    // --- Quiz 2 MCQs ---
     {
-        quiz: "Quiz 2",
-        qEn: "How to enable an interface? (command)",
-        qAr: "كيف يتم تفعيل واجهة شبكة (Interface) باستخدام الأمر في السطر الأوامر؟",
+        quiz: "Quiz 2 - MCQs",
+        qEn: "Location awareness benefits WSNs by:",
+        qAr: "الوعي بالوقع المكان الإدراكي (Location awareness) يفيد شبكات WSN عبر:",
         options: [
-            { en: "A. no shutdown", ar: "أ. no shutdown" },
-            { en: "B. any", ar: "ب. any" },
-            { en: "C. enable", ar: "ج. enable" },
-            { en: "D. start interface", ar: "د. start interface" }
-        ],
-        correct: 0,
-        explanation: "الأمر 'no shutdown' يُستخدم في إعدادات شبكات Cisco لتشغيل وتفعيل المنفذ/الواجهة (Interface)."
-    },
-    {
-        quiz: "Quiz 2",
-        qEn: "What is a hypervisor?",
-        qAr: "ما هو الـ Hypervisor؟ (سؤال مكرر من الكويز الثاني)",
-        options: [
-            { en: "A. An operating system for virtual machines", ar: "أ. نظام تشغيل للأجهزة الافتراضية." },
-            { en: "B. A type of virtual machine", ar: "ب. نوع من الأجهزة الافتراضية." },
-            { en: "C. Software that creates a virtualization layer allowing multiple guest operating systems to run on hardware", ar: "ج. برنامج يقدم طبقة محاكاة تسمح بتشغيل عدة أنظمة تشغيل ضيفة على العتاد." },
-            { en: "D. A physical component of a computer system", ar: "د. مكون مادي في الحاسوب." }
+            { en: "A. Reducing node production cost", ar: "أ. تقليل تكلفة إنتاج العقدة" },
+            { en: "B. Simplifying manufacturing", ar: "ب. تبسيط التصنيع" },
+            { en: "C. Supporting location-based apps", ar: "ج. دعم التطبيقات المعتمدة على موقع المكان" },
+            { en: "D. Eliminating gateways", ar: "د. إلغاء البوابات الشبكية" }
         ],
         correct: 2,
-        explanation: "الـ Hypervisor ينشئ طبقة تجريد فوق المكونات المادية لإدارة وتشغيل الأنظمة الافتراضية."
+        explanation: "معرفة الموقع الجغرافي تتيح تقديم خدمات وتطبيقات مرتبطة بالبيانات المكانية مثل تتبع الأهداف والاستجابة للطوارئ."
     },
     {
-        quiz: "Quiz 2",
-        qEn: "What is VirtualBox used for?",
-        qAr: "ما هو استخدام VirtualBox؟",
+        quiz: "Quiz 2 - MCQs",
+        qEn: "Multiple sinks in WSNs help with:",
+        qAr: "استخدام مصبات متعددة (Multiple sinks) يساهم في:",
         options: [
-            { en: "A. Creating virtual machines", ar: "أ. إنشاء وتنسيق الأجهزة الافتراضية (Creating virtual machines)." },
-            { en: "B. Media", ar: "ب. الوسائط المتعددة." },
-            { en: "C. Coding in Python", ar: "ج. كتابة كود بايثون." },
-            { en: "D. Designing websites", ar: "د. تصميم المواقع." }
-        ],
-        correct: 0,
-        explanation: "تطبيق VirtualBox مخصص لتشغيل وإنشاء البيئات والأنظمة الافتراضية."
-    },
-    {
-        quiz: "Quiz 2",
-        qEn: "What does RAID stand for?",
-        qAr: "ماذا يعني الاختصار RAID؟",
-        options: [
-            { en: "A. Redundant Array of Independent Data", ar: "أ. Redundant Array of Independent Data" },
-            { en: "B. Redundant Array of Independent Disks", ar: "ب. Redundant Array of Independent Disks" },
-            { en: "C. Random Access of Independent Disks", ar: "ج. Random Access of Independent Disks" },
-            { en: "D. Redundant Access to Integrated Disks", ar: "د. Redundant Access to Integrated Disks" }
-        ],
-        correct: 1,
-        explanation: "المصطلح الاختصاري لـ RAID هو Redundant Array of Independent Disks."
-    },
-    {
-        quiz: "Quiz 2",
-        qEn: "What command shows a list of running processes?",
-        qAr: "ما هو الأمر الذي يعرض قائمة بالمشاريع والعمليات القائمة قيد التشغيل (Running Processes) في نظام لينكس؟",
-        options: [
-            { en: "A. top", ar: "أ. top" },
-            { en: "B. check", ar: "ب. check" },
-            { en: "C. ping", ar: "ج. ping" },
-            { en: "D. pswd", ar: "د. pswd" }
-        ],
-        correct: 0,
-        explanation: "الأمر 'top' (وكذلك أمر ps) يعرض كافة العمليات التي تعمل حالياً واستخدامها لموارد النظام بشكل مباشر."
-    },
-    {
-        quiz: "Quiz 2",
-        qEn: "What is the main use of the ping command?",
-        qAr: "ما هو الاستخدام الرئيسي لأمر ping؟",
-        options: [
-            { en: "A. To delete internet history", ar: "أ. مسح سجل الإنترنت." },
-            { en: "B. To open a website", ar: "ب. فتح موقع إلكتروني." },
-            { en: "C. To check network connection to another host", ar: "ج. فحص والتحقق من الاتصال الشبكي مع جهاز/مضيف آخر." },
-            { en: "D. To compress files", ar: "د. ضغط الملفات." }
+            { en: "A. Simplifying routing", ar: "أ. تبسيط التوجيه" },
+            { en: "B. Reducing node cost", ar: "ب. خفض تكلفة العقدة" },
+            { en: "C. Load balancing", ar: "ج. موازنة الأحمال على الشبكة (Load balancing)" },
+            { en: "D. Increasing single point of failure", ar: "د. زيادة نقاط الفشل الفردية" }
         ],
         correct: 2,
-        explanation: "أمر ping يُرسل حزم ICMP للتحقق من إمكانية الوصول للجهاز الهدف وقياس زمن الاستجابة."
+        explanation: "تعدد المصبات يوزع استهلاك الطاقة وحجم حركة المرور بين أجزاء الشبكة المختلفة لمنع الاختناق."
     },
     {
-        quiz: "Quiz 2",
-        qEn: "What is a resource pool?",
-        qAr: "ما هو الـ Resource pool؟",
+        quiz: "Quiz 2 - MCQs",
+        qEn: "What does a PIR sensor detect?",
+        qAr: "ما الذي يكتشفه حساس الأشعة تحت الحمراء السلبية (PIR sensor)؟",
         options: [
-            { en: "A. A logical abstraction for managing CPU and memory resources", ar: "أ. تجريد منطقي لتنظيم وإدارة موارد المعالج والذاكرة." },
-            { en: "B. A physical storage device", ar: "ب. وحدة تخزين مادية." },
-            { en: "C. A type of hypervisor", ar: "ج. نوع موجه افتراضي." },
-            { en: "D. A networking protocol", ar: "د. بروتوكول شبكة." }
+            { en: "A. Infrared radiation from motion", ar: "أ. الأشعة تحت الحمراء المنبعثة من الأجسام المتحركة" },
+            { en: "B. Sound vibrations", ar: "ب. اهتزازات الصوت" },
+            { en: "C. Magnetic fields", ar: "ج. المجالات المغناطيسية" },
+            { en: "D. Temperature", ar: "د. درجة الحرارة" }
         ],
         correct: 0,
-        explanation: "الـ Resource Pool يسمح بتجميع قدرات المعالجة والذاكرة وتوزيعها بمرونة حسب حاجة الأنظمة."
+        explanation: "حساسات PIR تكتشف تغير التباين في الحرارة والأشعة تحت الحمراء الناتجة عن حركة الكائنات الحية."
     },
     {
-        quiz: "Quiz 2",
-        qEn: "What is one of the primary cost benefits of virtualization?",
-        qAr: "ما هي إحدى الفوائد الاقتصادية والتكلفية الرئيسية للمحاكاة الافتراضية؟",
+        quiz: "Quiz 2 - MCQs",
+        qEn: "What are the typical trigger pins on an ultrasonic sensor called?",
+        qAr: "ما هي منافذ التشغيل النموذجية في حساس الموجات فوق الصوتية؟",
         options: [
-            { en: "A. Eliminates all IT management costs", ar: "أ. إلغاء جميع تكاليف إدارة تكنولوجيا المعلومات." },
-            { en: "B. Reduces need for physical hardware through better utilization", ar: "ب. خفض الحاجة للأجهزة المادية بفضل الاستغلال الأفضل للموارد." },
-            { en: "C. Makes hardware maintenance more frequent", ar: "ج. زيادة معدل صيانة الأجهزة المادية." },
-            { en: "D. Requires purchase of more physical servers", ar: "د. يتطلب شراء المزيد من السيرفرات المادية." }
+            { en: "A. TX and RX", ar: "أ. TX و RX" },
+            { en: "B. Trig and Echo", ar: "ب. Trig و Echo" },
+            { en: "C. Set and Reset", ar: "ج. Set و Reset" },
+            { en: "D. IN and OUT", ar: "د. IN و OUT" }
         ],
         correct: 1,
-        explanation: "من خلال المحاكاة الافتراضية يتم دمج خوادم متعددة على جهاز واحد، مما يقلل الحاجة لشراء عتاد مادي جديد وتكاليف الطاقة والتبريد."
+        explanation: "منفذ Trig يُستخدم لإرسال نبضة الموجة الصوتية، ومنفذ Echo يستقبل النبضة المرتدة لتحديد المسافة."
     },
     {
-        quiz: "Quiz 2",
-        qEn: "Which storage medium offers the highest performance and lowest power consumption?",
-        qAr: "أي من وسائط التخزين التالية يقدم أعلى أداء وأقل استهلاك للطاقة؟",
+        quiz: "Quiz 2 - MCQs",
+        qEn: "Given 80% event detection probability, how many nodes needed for 99%?",
+        qAr: "مع احتمال اكتشاف حدث بنسبة 80% للعقدة الواحدة، كم عقدة نتاج لتحقيق نسبة اكتشاف إجمالية 99%؟",
         options: [
-            { en: "A. Flash Drive (SSD / Flash Storage)", ar: "أ. الذاكرة الوميضية (Flash Drive / SSD)." },
-            { en: "B. Optical Disc", ar: "ب. الأقراص الضوئية." },
-            { en: "C. Magnetic Tape", ar: "ج. الشريط المغناطيسي." },
-            { en: "D. Disk Drive", ar: "د. أقراص الـ HDD." }
-        ],
-        correct: 0,
-        explanation: "تكنولوجيا الـ Flash لا تحتوي على أجزاء ميكانيكية متحركة، مما يمنحها أعلى سرعة قراءة وكتابة وأقل استهلاك للكهرباء."
-    },
-    {
-        quiz: "Quiz 2",
-        qEn: "Where is the --help option typically placed in a command line?",
-        qAr: "أين يوضع الخيار (option) المسماة --help عادة في سطر الأوامر؟",
-        options: [
-            { en: "A. Between the command name and other options.", ar: "أ. بين اسم الأمر والخيارات الأخرى." },
-            { en: "B. It must be the very first element on the command line.", ar: "ب. يجب أن تكون العنصر الأول إطلاقاً." },
-            { en: "C. Before the command name.", ar: "ج. قبل اسم الأمر." },
-            { en: "D. After the command name (usually at the end)", ar: "د. بعد اسم الأمر (في نهاية سطر الأمر عادةً)." }
-        ],
-        correct: 3,
-        explanation: "في سطر الأوامر (CLI)، يتم كتابة اسم الأمر أولاً ثم تُلحق به الخيارات والـ Flags مثل --help في نهاية الأمر."
-    },
-    {
-        quiz: "Quiz 2",
-        qEn: "What is the primary goal of CPU load balancing in virtualization?",
-        qAr: "ما هو الهدف الرئيسي من توزيع الأحمال على المعالج (CPU load balancing) في المحاكاة الافتراضية؟",
-        options: [
-            { en: "A. To allocate all resources to a single VM", ar: "أ. تخصيص كل الموارد لجهاز افتراضي واحد." },
-            { en: "B. To evenly distribute workloads across CPU cores", ar: "ب. توزيع أعباء العمل بالتساوي عبر أنوية المعالج (CPU cores)." },
-            { en: "C. To eliminate memory overcommitment", ar: "ج. إلغاء تجاوز تخصيص الذاكرة." },
-            { en: "D. To reduce hypervisor overhead", ar: "د. تقليل الحمل الزائد على الـ hypervisor." }
-        ],
-        correct: 1,
-        explanation: "توزيع الأحمال يضمن استغلال كافة أنوية المعالج بشكل متوازٍ وتفادي تحميل نواة واحدة أكثر من طاقتها."
-    },
-    {
-        quiz: "Quiz 2",
-        qEn: "Which storage is directly attached to a server?",
-        qAr: "أي من أنواع التخزين التالية يكون متصلاً بشكل مباشر بالخادم (Directly Attached)؟",
-        options: [
-            { en: "A. NAS", ar: "أ. NAS (Network Attached Storage)" },
-            { en: "B. DAS", ar: "ب. DAS (Direct Attached Storage)" },
-            { en: "C. SAN", ar: "ج. SAN (Storage Area Network)" },
-            { en: "D. RAID", ar: "د. RAID" }
-        ],
-        correct: 1,
-        explanation: "تخزين DAS (Direct Attached Storage) يشير إلى وحدات التخزين المتصلة مباشرة بالحاسوب/السيرفر دون المرور عبر شبكة."
-    },
-    {
-        quiz: "Quiz 2",
-        qEn: "What does the whoami command return?",
-        qAr: "ماذا يرجع الأمر whoami عند تنفيذه في سطر الأوامر؟",
-        options: [
-            { en: "A. The current working directory", ar: "أ. مسار المجلد الحالي." },
-            { en: "B. The hostname of the system", ar: "ب. اسم المضيف/الجهاز." },
-            { en: "C. The list of all logged-in users", ar: "ج. قائمة بكافة المستخدمين المسجلين." },
-            { en: "D. The name of the current user", ar: "د. اسم المستخدم الحالي الذي يعمل الآن." }
-        ],
-        correct: 3,
-        explanation: "الأمر whoami يطبع اسم حساب المستخدم الحالي المفتوح في جلسة الـ Terminal."
-    },
-    {
-        quiz: "Quiz 2",
-        qEn: "Which RAID improves performance only?",
-        qAr: "أي مستويات RAID يحسن الأداء فقط بدون تقديم أي حماية ضد الفشل؟",
-        options: [
-            { en: "A. RAID 1", ar: "أ. RAID 1" },
-            { en: "B. RAID 10", ar: "ب. RAID 10" },
-            { en: "C. RAID 5", ar: "ج. RAID 5" },
-            { en: "D. RAID 0", ar: "د. RAID 0" }
-        ],
-        correct: 3,
-        explanation: "RAID 0 يعمل بنظام التجزئة (Striping) لزيادة السرعة والأداء فقط دون وجود بيانات تكافؤ أو نسق احتياطي."
-    },
-    {
-        quiz: "Quiz 2",
-        qEn: "What is Apt-get?",
-        qAr: "ما هو أمر apt-get؟",
-        options: [
-            { en: "A. All lines", ar: "أ. All lines" },
-            { en: "B. help to remove files from ubuntu", ar: "ب. المساعدة في إزالة الملفات من أوبونتو." },
-            { en: "C. The apt-get command is a powerful command-line tool used to work with Ubuntu's Advanced Packaging Tool (APT)", ar: "ج. أداة سطر أوامر قوية تُستخدم للتعامل مع نظام إدارة الحزم (APT) في توزيعة أوبونتو لتثبيت وتحديث البرامج." },
-            { en: "D. not in this course", ar: "د. ليس ضمن هذا المقرر." }
+            { en: "A. 5", ar: "أ. 5 عقد" },
+            { en: "B. 2", ar: "ب. عقدتان" },
+            { en: "C. 3", ar: "ج. 3 عقد" },
+            { en: "D. 4", ar: "د. 4 عقد" }
         ],
         correct: 2,
-        explanation: "أمر apt-get هو أداة إدارة حزم البرمجيات الرسمية (Advanced Package Tool) لتثبيت وحذف وتحديث الحزم في Linux/Ubuntu."
+        explanation: "احتمال عدم الاكتشاف لعقدة واحدة هو (1 - 0.8) = 0.2. عند استخدام 3 عقد: (0.2)^3 = 0.008. بالتالي احتمال الاكتشاف = 1 - 0.008 = 99.2%."
+    },
+    {
+        quiz: "Quiz 2 - MCQs",
+        qEn: "In a line-following robot, which sensor helps detect black vs. white surfaces?",
+        qAr: "في الروبوت متتبع الخطوط، أي حساس يساعد في التمييز بين الأسطح البيضاء والسوداء؟",
+        options: [
+            { en: "A. IR reflectance sensor", ar: "أ. حساس انعكاس الأشعة تحت الحمراء (IR reflectance sensor)" },
+            { en: "B. UV sensor", ar: "ب. حساس UV" },
+            { en: "C. IR flame sensor", ar: "ج. حساس اللهب" },
+            { en: "D. Ultrasonic sensor", ar: "د. حساس Ultrasonic" }
+        ],
+        correct: 0,
+        explanation: "حساس الانعكاس يبعث أشعة تحت حمراء؛ اللون الأبيض يعكس معظم الضوء بينما يمتص اللون الأسود الأشعة."
+    },
+    {
+        quiz: "Quiz 2 - MCQs",
+        qEn: "Which pin on the flame sensor is connected to the ground?",
+        qAr: "أي منفذ في حساس اللهب يتم توصيله بالـ Ground (الأرضي)؟",
+        options: [
+            { en: "A. GND", ar: "أ. منفذ GND" },
+            { en: "B. Signal Output", ar: "ب. منفذ الإشارة" },
+            { en: "C. VCC", ar: "ج. منفذ VCC" },
+            { en: "D. Power", ar: "د. منفذ الطاقة" }
+        ],
+        correct: 0,
+        explanation: "المنفذ GND هو الاختصار القياسي للتوصيل بالأرضي في الدوائر الإلكترونية."
+    },
+    {
+        quiz: "Quiz 2 - MCQs",
+        qEn: "Which sensor is used in smartphones to detect finger taps on the screen?",
+        qAr: "أي حساس يُستخدم في الهواتف الذكية للتعرف على لمسات الأصابع على الشاشة؟",
+        options: [
+            { en: "A. Touch sensor", ar: "أ. حساس اللمس (Touch sensor)" },
+            { en: "B. PIR sensor", ar: "ب. حساس PIR" },
+            { en: "C. Vibration sensor", ar: "ج. حساس الاهتزاز" },
+            { en: "D. Tilt sensor", ar: "د. حساس الإمالة" }
+        ],
+        correct: 0,
+        explanation: "حساسات اللمس (السعوية Touch sensors) هي المكون الأساسي للتعرف على لمسات شاشات الهواتف."
+    },
+    {
+        quiz: "Quiz 2 - MCQs",
+        qEn: "Centralized organization struggles with:",
+        qAr: "التنظيم المركزي (Centralized organization) يواجه صعوبة في:",
+        options: [
+            { en: "A. Signal processing", ar: "أ. معالجة الإشارة" },
+            { en: "B. Data aggregation", ar: "ب. تجميع البيانات" },
+            { en: "C. Energy balancing", ar: "ج. موازنة الطاقة" },
+            { en: "D. Network scalability", ar: "د. قابلة التوسع الشبكي (Network scalability)" }
+        ],
+        correct: 3,
+        explanation: "مع نمو حجم الشبكة، يتعثر النهج المركزي بسبب الضغط الزائد والاختناق المروري عند العقدة المركزية."
+    },
+    {
+        quiz: "Quiz 2 - MCQs",
+        qEn: "Why is scalability non-trivial for large WSNs?",
+        qAr: "لماذا تعد قابلة التوسع أمراً حرجاً وغير بسيط للشبكات الكبيرة؟",
+        options: [
+            { en: "A. Protocol overhead grows", ar: "أ. عبء وشغل البروتوكول يزداد بشكل كبير (Protocol overhead grows)" },
+            { en: "B. Power increases", ar: "ب. الطاقة تزداد" },
+            { en: "C. Sensors become inaccurate", ar: "ج. الحساسات تصبح غير دقيقة" },
+            { en: "D. Nodes become larger", ar: "د. العقد تصبح أكبر حجم" }
+        ],
+        correct: 0,
+        explanation: "تزايد عدد العقد يرفع من حجم الرسائل وحزم التحكم (Overhead) المطلوبة لإدارة التوجيه والمزامنة."
+    },
+    {
+        quiz: "Quiz 2 - MCQs",
+        qEn: "Which metric best measures WSN effectiveness?",
+        qAr: "أي مقياس يعبر بشكل أفضل عن مدى كفاءة وفعالية شبكات WSN؟",
+        options: [
+            { en: "A. Messages sent", ar: "أ. عدد الرسائل المرسلة" },
+            { en: "B. Node uptime", ar: "ب. وقت عمل العقد" },
+            { en: "C. Events reported correctly", ar: "ج. الأحداث المبلغ عنها بشكل صحيح (Events reported correctly)" },
+            { en: "D. Bits transmitted", ar: "د. عدد البتات المنقولة" }
+        ],
+        correct: 2,
+        explanation: "الهدف الأساسي لشبكات الحساسات هو اكتشاف والإبلاغ عن الأحداث الحقيقية بالدقة المطلوبة."
+    },
+    {
+        quiz: "Quiz 2 - MCQs",
+        qEn: "For disaster monitoring, prioritize:",
+        qAr: "لمراقبة وإدارة الكوارث، يتم إعطاء الأولوية لـ:",
+        options: [
+            { en: "A. No aggregation", ar: "أ. عدم التجميع" },
+            { en: "B. Adaptive fidelity", ar: "ب. الدقة التكيفية (Adaptive fidelity)" },
+            { en: "C. Fixed high fidelity", ar: "ج. دقة ثابتة عالية" },
+            { en: "D. Single-hop only", ar: "د. القفزة الفردية فقط" }
+        ],
+        correct: 1,
+        explanation: "الدقة التكيفية تتيح رفع معدل وجودة جمع البيانات عند وقوع الكارثة وخفضه في الأوقات العادية للحفاظ على الطاقة."
+    },
+    {
+        quiz: "Quiz 2 - MCQs",
+        qEn: "Best approach for tracking mobile events:",
+        qAr: "أفضل نهج لتتبع الأحداث المتحركة في المكان هو:",
+        options: [
+            { en: "A. Fixed schedules", ar: "أ. الجداول الثابتة" },
+            { en: "B. Centralized control", ar: "ب. التحكم المركزي" },
+            { en: "C. Static routing", ar: "ج. التوجيه الثابت" },
+            { en: "D. Dynamic responsibility", ar: "د. المسؤولية الديناميكية (Dynamic responsibility)" }
+        ],
+        correct: 3,
+        explanation: "تتغير العقدة المسؤولة ديناميكياً لتتبع مسار وتغييرات موقع الحدث المتحرك."
+    },
+    {
+        quiz: "Quiz 2 - MCQs",
+        qEn: "Best data-centric method for industrial monitoring:",
+        qAr: "أفضل طريقة متمركزة حول البيانات للمراقبة الصناعية هي:",
+        options: [
+            { en: "A. Publish/subscribe", ar: "أ. نموذج النشر/الاشتراك (Publish/subscribe)" },
+            { en: "B. Central database", ar: "ب. قاعدة بيانات مركزية" },
+            { en: "C. Static addressing", ar: "ج. العنونة الثابتة" },
+            { en: "D. Raw data flooding", ar: "د. الإغراق بالبيانات الخام" }
+        ],
+        correct: 0,
+        explanation: "نموذج Publish/Subscribe يسمح للتطبيقات بالاشتراك فقط في أنواع القراءات الحساسة التي تهمها."
+    },
+    {
+        quiz: "Quiz 2 - MCQs",
+        qEn: "What are ISM bands?",
+        qAr: "ما هي نطاقات ترددات ISM؟",
+        options: [
+            { en: "A. Satellite", ar: "أ. ترددات الأقمار الصناعية" },
+            { en: "B. Licensed cellular", ar: "ب. الترددات الخلوية المرخصة" },
+            { en: "C. License-free", ar: "ج. ترددات غير مرخصة مجانية (License-free)" },
+            { en: "D. Military", ar: "د. الترددات العسكرية" }
+        ],
+        correct: 2,
+        explanation: "نطاقات ISM (Industrial, Scientific, and Medical) غير مرخصة ومتاحة للاستخدام العام دون الحاجة لتراخيص."
+    },
+    {
+        quiz: "Quiz 2 - MCQs",
+        qEn: "What innovation would most improve WSN scalability?",
+        qAr: "أي ابتكار يساهم بشكل أكبر في تحسين قابلية التوسع لشبكات WSN؟",
+        options: [
+            { en: "A. Higher transmission power", ar: "أ. زيادة طاقة الإرسال" },
+            { en: "B. Larger batteries", ar: "ب. بطاريات أكبر" },
+            { en: "C. Better routing protocols", ar: "ج. بروتوكولات توجيه أفضل وأكفأ" },
+            { en: "D. More powerful nodes", ar: "د. عقد ذات معالجة أقوى" }
+        ],
+        correct: 2,
+        explanation: "بروتوكولات التوجيه الذكية والموزعة تقلل من تراكم الرسائل وتتيح التوسع دون تدهور الأداء."
+    },
+    {
+        quiz: "Quiz 2 - MCQs",
+        qEn: "How to handle overlapping event regions?",
+        qAr: "كيف يتم التعامل مع المناطق التي تتداخل فيها تغطية الأحداث بين أكثر من عقدة؟",
+        options: [
+            { en: "A. Collaborative sensing", ar: "أ. الاستشعار التعاوني (Collaborative sensing)" },
+            { en: "B. Random selection", ar: "ب. الاختيار العشوائي" },
+            { en: "C. Single node responsibility", ar: "ج. مسؤولية عقدة واحدة" },
+            { en: "D. Ignore overlaps", ar: "د. تجاهل التداخل" }
+        ],
+        correct: 0,
+        explanation: "الاستشعار التعاوني بين العقد المجاورة يتيح دمج القراءات لرفع الدقة وتقليل تكرار الرسائل."
+    },
+
+    // --- Quiz 3 MCQs ---
+    {
+        quiz: "Quiz 3 - MCQs",
+        qEn: "The accuracy of Time synchronization algorithms depends on:",
+        qAr: "دقة خوارزميات مزامنة الوقت تعتمد بشكل مباشر على:",
+        options: [
+            { en: "A. Number of packet errors", ar: "أ. عدد أخطاء الحزم" },
+            { en: "B. Number of retransmission times", ar: "ب. عدد مرات إعادة الإرسال" },
+            { en: "C. Speed in Tasks achievement", ar: "ج. السرعة في إنجاز المهام" },
+            { en: "D. The delay between reception of last bit and timestamping", ar: "د. التأخير بين استقبال آخر بت في الحزمة ووقت تسجيل الطابع الزمني (Timestamp)" }
+        ],
+        correct: 3,
+        explanation: "تذبذب زمن التأخير (Jitter/Delay) بين لحظة وصول الحزمة وتسجيل الطابع الزمني هو المسبب الرئيسي للخطأ في المزامنة."
+    },
+    {
+        quiz: "Quiz 3 - MCQs",
+        qEn: "Lightweight time synchronization protocol (LTS) is from:",
+        qAr: "بروتوكول LTS لمزامنة الوقت ينتمي إلى مجموعة:",
+        options: [
+            { en: "A. Localization protocols", ar: "أ. بروتوكولات تحديد الموقع" },
+            { en: "B. Positioning Protocols", ar: "ب. بروتوكولات التمركز" },
+            { en: "C. Protocols based on receiver/receiver synchronization", ar: "ج. بروتوكولات المزامنة بين المستقبل والمستقبل" },
+            { en: "D. Time Synchronization protocols", ar: "د. بروتوكولات مزامنة الوقت (Time Synchronization protocols)" }
+        ],
+        correct: 3,
+        explanation: "بروتوكول LTS هو أحد أبرز بروتوكولات مزامنة الوقت الخفيفة (Time Synchronization Protocols)."
+    },
+    {
+        quiz: "Quiz 3 - MCQs",
+        qEn: "In Time Sync, if distance d=3m and time difference is 0.002s, then angle of arrival (in rad) is:",
+        qAr: "في مزامنة الوقت، إذا كانت المسافة d=3m والفرق الزمني 0.002 ثانية، فإن زاوية الوصول (Angle of arrival) تكون:",
+        options: [
+            { en: "A. 0.3546", ar: "أ. 0.3546" },
+            { en: "B. 0.222", ar: "ب. 0.222" },
+            { en: "C. 0.125", ar: "ج. 0.125" },
+            { en: "D. 0.6324", ar: "د. 0.6324" }
+        ],
+        correct: 1,
+        explanation: "باستخدام معادلة قياس زاوية الوصول المستندة للسرعة والمسافة بين الميكروفونات/الحساسات: sin(theta) = (v * dt) / d = (343 * 0.002) / 3 = 0.686 / 3 = 0.228 rad (تقريباً 0.222)."
+    },
+    {
+        quiz: "Quiz 3 - MCQs",
+        qEn: "'Wireless can be applied on large scale...' - Is this a DISADVANTAGE of WSNs?",
+        qAr: "'إمكانية تطبيق الشبكات اللاسلكية على نطاق واسع في التعدين والرعاية الصحية...' هل تعتبر هذه الإفادة من عيوب (Disadvantages) شبكات WSN؟",
+        options: [
+            { en: "A. False", ar: "أ. خطأ (False) - هذه تعتبر ميزة وليست عيباً" },
+            { en: "B. True", ar: "ب. صح (True)" }
+        ],
+        correct: 0,
+        explanation: "تعدد الاستخدامات والتطبيق واسع النطاق هو ميزة وفائدة رئيسية (Advantage) وليس عيباً."
+    },
+    {
+        quiz: "Quiz 3 - MCQs",
+        qEn: "What tradeoff exists between delay and energy?",
+        qAr: "ما هي المقايضة (Trade-off) الموجودة بين التأخير (Delay) واستهلاك الطاقة؟",
+        options: [
+            { en: "A. Lower delay always saves energy", ar: "أ. التأخير الأقل يوفر الطاقة دائماً" },
+            { en: "B. Energy increases delay", ar: "ب. الطاقة تزيد التأخير" },
+            { en: "C. Higher delay can save energy", ar: "ج. التأخير الأعلى يمكن أن يوفر في استهلاك الطاقة (Higher delay can save energy)" },
+            { en: "D. Delay doesn't affect energy", ar: "د. التأخير لا يؤثر على الطاقة" }
+        ],
+        correct: 2,
+        explanation: "تأخير إرسال الحزم وتجميعها يسمح بالعناية بجدولة النوم (Duty cycling) وإرسالها دفعة واحدة مما يوفر طاقة البث."
+    },
+    {
+        quiz: "Quiz 3 - MCQs",
+        qEn: "For energy efficiency, prioritize:",
+        qAr: "لتحقيق أقصى كفاءة في استخدام الطاقة، يجب إعطاء الأولوية لـ:",
+        options: [
+            { en: "A. Ignoring transmission power", ar: "أ. تجاهل طاقة الإرسال" },
+            { en: "B. Balancing all node power", ar: "ب. موازنة استهلاك الطاقة بين جميع العقد" },
+            { en: "C. Maximizing single node life", ar: "ج. أقصى زيادة لعمر عقدة واحدة" },
+            { en: "D. Minimizing hops", ar: "د. تقليل القفزات" }
+        ],
+        correct: 1,
+        explanation: "موازنة الطاقة بين العقد يضمن عدم انهيار عقد معينة قبل غيرها مما يعطل اتصالية الشبكة ككل."
+    }
+];
+
+const essayQuestions = [
+    {
+        quiz: "Quiz 1 - Essay Question",
+        qEn: "Q1: What is A Sensor Network?",
+        qAr: "س1: عرف شبكة الحساسات (Sensor Network)؟",
+        answer: "A sensor network is an infrastructure comprised of sensing (measuring), computing, and communication elements that gives an administrator the ability to instrument, observe, and react to events and phenomena in a specified environment."
+    },
+    {
+        quiz: "Quiz 1 - Essay Question",
+        qEn: "Q2: Sensors can be roughly categorized into three categories ... State briefly?",
+        qAr: "س2: يمكن تصنيف الحساسات إجمالاً إلى ثلاثة أنواع... اذكرها باختصار؟",
+        answer: "1. Passive, omnidirectional sensors: These sensors can measure a physical quantity at the point of the sensor node without manipulating the environment by active probing.
+2. Passive, narrow-beam sensors: These sensors are passive as well but have a well-defined notion of direction of measurement.
+3. Active sensors: This last group of sensors actively probes the environment."
+    },
+    {
+        quiz: "Quiz 1 - Essay Question",
+        qEn: "Q3: In Time Synchronization, Compare Between LTS and RBS?",
+        qAr: "س3: قارن بين بروتوكول LTS وبروتوكول RBS في مزامنة الوقت؟",
+        answer: "1. Lightweight time synchronization protocol (LTS):
+Attempts to synchronize the clocks of a sensor network to the clocks held by certain reference nodes (like GPS receivers). It allows trade-offs between energy expenditure and achievable accuracy.
+
+2. Reference broadcast synchronization (RBS):
+Consists of two components. In the first, a set of nodes within a single broadcast domain estimate their peers' clocks. The second relates timestamps between distant nodes across multiple broadcast domains."
+    },
+    {
+        quiz: "Quiz 2 - Essay Question",
+        qEn: "Q1: State Localization and positioning Approaches (in details)?",
+        qAr: "س1: اذكر أساليب وطرق تحديد الموقع والتمركز (in details)؟",
+        answer: "1. Proximity:
+The simplest technique exploiting the finite range of wireless communication to decide if a node is in proximity of an anchor.
+
+2. Trilateration and triangulation:
+Extracting geometric relationships (distances/angles) between nodes to compute relative/absolute coordinates.
+
+3. Determining distances:
+Estimating distances to anchor nodes using facilities like radio signals (RSSI, ToA, TDoA)."
+    },
+    {
+        quiz: "Quiz 2 - Essay Question",
+        qEn: "Q2: Compare between Protocols of time synchronization (categories and Protocols) briefly?",
+        qAr: "س2: قارن بين فئات بروتوكولات مزامنة الوقت؟",
+        answer: "1. Sender/Receiver Synchronization:
+One node (receiver) exchanges packets with another (sender) to sync. Requires bidirectional links.
+Examples: LTS, TPSN.
+
+2. Receiver/Receiver Synchronization:
+Multiple receivers of the same timestamped packet synchronize with each other, not with the sender.
+Examples: RBS, HRTS."
+    },
+    {
+        quiz: "Quiz 3 - Essay Question",
+        qEn: "Q4: In Time Synchronization, compare between TPSN protocol and HRTS protocol?",
+        qAr: "س4: قارن بين بروتوكولي TPSN و HRTS في مزامنة الوقت؟",
+        answer: "• Timing-sync protocol for sensor networks (TPSN):
+Pair-wise, sender/receiver protocol. Operates asymmetrically (Node i syncs to Node j). Builds a spanning tree where each node knows its level and parent.
+
+• Hierarchy referencing time synchronization (HRTS):
+Receiver/receiver technique synchronizing all nodes in a broadcast domain and constructing a tree for network-wide sync, triggered periodically by the root."
     }
 ];
 
 function renderQuiz() {
     const container = document.getElementById('quiz-body');
-    document.getElementById('total').innerText = quizData.length;
-    let currentQuiz = "";
+    document.getElementById('total').innerText = mcqQuestions.length;
+    let currentQuizSection = "";
 
-    quizData.forEach((q, qIndex) => {
-        if (q.quiz !== currentQuiz) {
-            currentQuiz = q.quiz;
+    // Render MCQs
+    mcqQuestions.forEach((q, qIndex) => {
+        if (q.quiz !== currentQuizSection) {
+            currentQuizSection = q.quiz;
             const sectionHeader = document.createElement('h2');
             sectionHeader.className = 'quiz-section-title';
-            sectionHeader.innerText = `أسئلة ${currentQuiz}`;
+            sectionHeader.innerText = currentQuizSection;
             container.appendChild(sectionHeader);
         }
 
@@ -707,35 +835,53 @@ function renderQuiz() {
         });
 
         card.innerHTML = `
-            <div class="question-num">السؤال ${qIndex + 1}</div>
+            <div class="question-num">سؤال اختيارات ${qIndex + 1}</div>
             <div class="question-text-en">${q.qEn}</div>
             <div class="question-text-ar">${q.qAr}</div>
             <ul class="options-list">
                 ${optionsHTML}
             </ul>
             <div class="explanation" id="exp-${qIndex}">
-                <strong>السبب / الشرح:</strong> ${q.explanation}
+                <strong>الشرح والسبب العلمي:</strong> ${q.explanation}
             </div>
+        `;
+        container.appendChild(card);
+    });
+
+    // Render Essay Questions
+    const essaySectionHeader = document.createElement('h2');
+    essaySectionHeader.className = 'quiz-section-title';
+    essaySectionHeader.innerText = "أسئلة المقالي (Short Answer & Essay Questions)";
+    container.appendChild(essaySectionHeader);
+
+    essayQuestions.forEach((eq, eqIndex) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+
+        card.innerHTML = `
+            <div class="question-num">${eq.quiz}</div>
+            <div class="question-text-en">${eq.qEn}</div>
+            <div class="question-text-ar">${eq.qAr}</div>
+            <button class="btn-toggle" onclick="toggleEssayAnswer(${eqIndex})">إظهار الإجابة النموذجية</button>
+            <div class="essay-answer" id="essay-ans-${eqIndex}">${eq.answer}</div>
         `;
         container.appendChild(card);
     });
 }
 
 let userScore = 0;
-let answeredCount = 0;
 const answeredQuestions = new Set();
 
 function selectOption(qIndex, selectedIndex) {
     if (answeredQuestions.has(qIndex)) return;
 
     answeredQuestions.add(qIndex);
-    const qData = quizData[qIndex];
+    const qData = mcqQuestions[qIndex];
     const isCorrect = selectedIndex === qData.correct;
 
     const selectedElem = document.getElementById(`opt-${qIndex}-${selectedIndex}`);
     const correctElem = document.getElementById(`opt-${qIndex}-${qData.correct}`);
 
-    // Disable all options for this question
     for (let i = 0; i < qData.options.length; i++) {
         document.getElementById(`opt-${qIndex}-${i}`).classList.add('disabled');
     }
@@ -750,6 +896,15 @@ function selectOption(qIndex, selectedIndex) {
 
     document.getElementById('score').innerText = userScore;
     document.getElementById(`exp-${qIndex}`).style.display = 'block';
+}
+
+function toggleEssayAnswer(index) {
+    const ansElem = document.getElementById(`essay-ans-${index}`);
+    if (ansElem.style.display === 'block') {
+        ansElem.style.display = 'none';
+    } else {
+        ansElem.style.display = 'block';
+    }
 }
 
 function resetQuiz() {
