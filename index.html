@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WSP (AI423) - Interactive Question Bank</title>
+    <title>Wireless Sensor Protocols & Programming (AI423)</title>
     <style>
         :root {
             --bg-color: #f4f7f6;
@@ -181,7 +181,6 @@
             color: #1e5799;
         }
 
-        /* Short Answer Styling */
         .essay-answer {
             display: none;
             margin-top: 12px;
@@ -244,7 +243,6 @@
 
 <script>
 const mcqQuestions = [
-    // --- Quiz 1 MCQs ---
     {
         quiz: "Quiz 1 - MCQs",
         qEn: "What is the primary function of a controller in a WSN node?",
@@ -256,7 +254,7 @@ const mcqQuestions = [
             { en: "D. Data storage", ar: "د. تخزين البيانات" }
         ],
         correct: 2,
-        explanation: "وحدة التحكم (Controller/Microcontroller) مسؤولة بشكل أساسي عن معالجة وتجهيز البيانات المستلمة من الحساسات وإدارة عمل العقدة."
+        explanation: "وحدة التحكم (Controller) مسؤولة بشكل أساسي عن معالجة البيانات وإدارة عمل العقدة."
     },
     {
         quiz: "Quiz 1 - MCQs",
@@ -282,7 +280,7 @@ const mcqQuestions = [
             { en: "D. Detect the presence of flame or fire", ar: "د. اكتشاف وجود اللهب أو الحريق" }
         ],
         correct: 3,
-        explanation: "حساس اللهب مصمم للكشف عن الإشعاع الضوئي الصادر من الحرائق واللهب (خاصة الأشعة تحت الحمراء)."
+        explanation: "حساس اللهب مصمم للكشف عن الإشعاع الضوئي الصادر من الحرائق واللهب."
     },
     {
         quiz: "Quiz 1 - MCQs",
@@ -295,7 +293,7 @@ const mcqQuestions = [
             { en: "D. Improved fault tolerance", ar: "د. تحسين تحمل الأعطال (Fault tolerance)" }
         ],
         correct: 3,
-        explanation: "التنظيم الموزع يتفادى وجود نقطة فشل واحدة (Single point of failure)، مما يرفع كفاءة تحمل الأعطال في الشبكة."
+        explanation: "التنظيم الموزع يتفادى وجود نقطة فشل واحدة مما يرفع كفاءة تحمل الأعطال."
     },
     {
         quiz: "Quiz 1 - MCQs",
@@ -303,25 +301,12 @@ const mcqQuestions = [
         qAr: "يمكن قياس عمر الشبكة (Network lifetime) من خلال:",
         options: [
             { en: "A. Average battery level", ar: "أ. متوسط مستوى البطارية" },
-            { en: "B. Time to first node failure", ar: "ب. الوقت حتى نفاد/تعطل أول عقدة (Time to first node failure)" },
+            { en: "B. Time to first node failure", ar: "ب. الوقت حتى تعطل أول عقدة" },
             { en: "C. Number of nodes", ar: "ج. عدد العقد" },
             { en: "D. Total data transmitted", ar: "د. إجمالي البيانات المرسلة" }
         ],
         correct: 1,
-        explanation: "أحد المقاييس الشائعة والمهمة لعمر الشبكة هو الفترة الزمنية حتى انقطاع أو استهلاك بطارية أول عقدة فيها."
-    },
-    {
-        quiz: "Quiz 1 - MCQs",
-        qEn: "Scalability in WSNs must consider:",
-        qAr: "قابلة التوسع (Scalability) في شبكات WSNs يجب أن تأخذ بعين الاعتبار:",
-        options: [
-            { en: "A. 10s to 1000s of nodes", ar: "أ. التوسع من عشرات إلى آلاف العقد" },
-            { en: "B. Only static networks", ar: "ب. الشبكات الثابتة فقط" },
-            { en: "C. Single-hop communication", ar: "ج. الاتصال ثنائي القفزة الواحدة" },
-            { en: "D. Only small networks", ar: "د. الشبكات الصغيرة فقط" }
-        ],
-        correct: 0,
-        explanation: "بروتوكولات WSN يجب أن تكون قادرة على العمل بكفاءة سواء مع عدد قليل (عشرات) أو ضخم (آلاف) من الحساسات."
+        explanation: "أحد المقاييس الشائعة لعمر الشبكة هو الفترة الزمنية حتى استهلاك بطارية أول عقدة فيها."
     },
     {
         quiz: "Quiz 1 - MCQs",
@@ -334,33 +319,7 @@ const mcqQuestions = [
             { en: "D. Distance", ar: "د. المسافة (Distance)" }
         ],
         correct: 3,
-        explanation: "حساس الموجات فوق الصوتية يقيس المسافة عن طريق حساب زمن إرسال واستقبال ارتداد الموجة الصوتية."
-    },
-    {
-        quiz: "Quiz 1 - MCQs",
-        qEn: "Which sensor is best for measuring the distance of an object in a dark environment without physical contact?",
-        qAr: "أي حساس هو الأفضل لقياس مسافة جسم في بيئة مظلمة دون تلامس مادي؟",
-        options: [
-            { en: "A. PIR sensor", ar: "أ. حساس PIR" },
-            { en: "B. Tilt sensor", ar: "ب. حساس الميلان" },
-            { en: "C. Ultrasonic sensor", ar: "ج. حساس الموجات فوق الصوتية (Ultrasonic sensor)" },
-            { en: "D. Flame sensor", ar: "د. حساس اللهب" }
-        ],
-        correct: 2,
-        explanation: "حساس Ultrasonic يعتمد على الموجات الصوتية وليس الضوء، فيعمل في الظلام التام ودون الحاجة لتلامس مادي."
-    },
-    {
-        quiz: "Quiz 1 - MCQs",
-        qEn: "Which sensor can detect a fire even in smoky conditions where visible light is blocked?",
-        qAr: "أي حساس يمكنه اكتشاف الحريق حتى في ظروف الدخان حيث يتم حجب الضوء المرئي؟",
-        options: [
-            { en: "A. Ultrasonic sensor", ar: "أ. حساس Ultrasonic" },
-            { en: "B. UV sensor", ar: "ب. حساس الأشعة فوق البنفسجية" },
-            { en: "C. IR reflectance sensor", ar: "ج. حساس انعكاس الأشعة تحت الحمراء" },
-            { en: "D. IR flame sensor", ar: "د. حساس اللهب بالأشعة تحت الحمراء (IR flame sensor)" }
-        ],
-        correct: 3,
-        explanation: "حساس IR Flame يخترق الدخان لأن أطوال موجات الأشعة تحت الحمراء تمر عبر جزيئات الدخان بكفاءة عكس الضوء المرئي."
+        explanation: "يقيس المسافة بحساب زمن إرسال واستقبال الموجة الصوتية."
     },
     {
         quiz: "Quiz 1 - MCQs",
@@ -373,100 +332,7 @@ const mcqQuestions = [
             { en: "D. Actuator", ar: "د. المشغل الميكانيكي" }
         ],
         correct: 0,
-        explanation: "الـ Transceiver هو المكون المدمج المسؤول عن إرسال واستقبال الإشارات اللاسلكية."
-    },
-    {
-        quiz: "Quiz 1 - MCQs",
-        qEn: "Which frequency is used for WLAN?",
-        qAr: "أي من الترددات التالية يُستخدم لشبكات WLAN (مثل Wi-Fi)؟",
-        options: [
-            { en: "A. 433MHz", ar: "أ. 433 ميغاهرتز" },
-            { en: "B. 2.4GHz", ar: "ب. 2.4 غيغاهرتز (2.4GHz)" },
-            { en: "C. 5.8GHz", ar: "ج. 5.8 غيغاهرتز" },
-            { en: "D. 24GHz", ar: "د. 24 غيغاهرتز" }
-        ],
-        correct: 1,
-        explanation: "تردد 2.4GHz هو التردد المعتمد والأشهر لشبكات WLAN والمعايير مثل IEEE 802.11b/g/n."
-    },
-    {
-        quiz: "Quiz 1 - MCQs",
-        qEn: "What distinguishes WSN sinks from sources?",
-        qAr: "ما الذي يميز المصبات (Sinks) عن المصادر (Sources) في WSNs؟",
-        options: [
-            { en: "A. Sinks request data", ar: "أ. المصبات هي من تطلب البيانات (Sinks request data)" },
-            { en: "B. Sinks are always mobile", ar: "ب. المصبات دائماً متحركة" },
-            { en: "C. Sinks have more power", ar: "ج. المصبات لديها طاقة أعلى دائماً" },
-            { en: "D. Sinks provide data", ar: "د. المصبات توفر البيانات" }
-        ],
-        correct: 0,
-        explanation: "العقد المصدرية (Sources) تولد البيانات، بينما المصبات (Sinks) هي المجمعات التي تطلب وتستقبل هذه البيانات."
-    },
-    {
-        quiz: "Quiz 1 - MCQs",
-        qEn: "Data-centric networking emphasizes:",
-        qAr: "الشبكات المتمركزة حول البيانات (Data-centric networking) تركز على:",
-        options: [
-            { en: "A. Physical MAC addresses", ar: "أ. عناوين MAC المادية" },
-            { en: "B. Node IP addresses", ar: "ب. عناوين IP الخاصة بالعقد" },
-            { en: "C. Geographic coordinates", ar: "ج. الإحداثيات الجغرافية" },
-            { en: "D. Content of data", ar: "د. محتوى البيانات نفسها (Content of data)" }
-        ],
-        correct: 3,
-        explanation: "في Data-centric networking، الاهتمام ينصب على طبيعة ومحتوى البيانات ذاتها بدلاً من هوية وعنوان العقدة التراسلية."
-    },
-    {
-        quiz: "Quiz 1 - MCQs",
-        qEn: "Why is in-network processing important in WSNs?",
-        qAr: "لماذا تعد المعالجة داخل الشبكة (In-network processing) مهمة في WSNs؟",
-        options: [
-            { en: "A. It reduces the amount of data that needs to be transmitted", ar: "أ. تقلل من كمية البيانات التي تطلب إرسالها عبر الشبكة" },
-            { en: "B. It improves signal reception", ar: "ب. تحسن استقبال الإشارة" },
-            { en: "C. It increases processing speed", ar: "ج. تزيد سرعة المعالجة" },
-            { en: "D. It enables better encryption", ar: "د. تمكن من تشفير أفضل" }
-        ],
-        correct: 0,
-        explanation: "تجميع ومعالجة البيانات محلياً يقلل حجم التراسل اللاسلكي وهو الجزء الأكثر استهلاكاً للطاقة في العقد."
-    },
-    {
-        quiz: "Quiz 1 - MCQs",
-        qEn: "WSN tunneling allows:",
-        qAr: "تقنية النفق (WSN tunneling) تسمح بـ:",
-        options: [
-            { en: "A. Increased node processing", ar: "أ. زيادة معالجة العقدة" },
-            { en: "B. Reduced aggregation needs", ar: "ب. تقليل الحاجة للتجميع" },
-            { en: "C. Interconnection of remote WSNs", ar: "ج. الربط الشبكي بين شبكات WSNs متباعدة" },
-            { en: "D. Internet replacement of WSNs", ar: "د. استبدال الإنترنت بـ WSNs" }
-        ],
-        correct: 2,
-        explanation: "الـ Tunneling يتيح ربط ونقل حزم البيانات بين شبكات WSN منفصلة جغرافي عبر شبكات أخرى كالإنترنت."
-    },
-
-    // --- Quiz 2 MCQs ---
-    {
-        quiz: "Quiz 2 - MCQs",
-        qEn: "Location awareness benefits WSNs by:",
-        qAr: "الوعي بالوقع المكان الإدراكي (Location awareness) يفيد شبكات WSN عبر:",
-        options: [
-            { en: "A. Reducing node production cost", ar: "أ. تقليل تكلفة إنتاج العقدة" },
-            { en: "B. Simplifying manufacturing", ar: "ب. تبسيط التصنيع" },
-            { en: "C. Supporting location-based apps", ar: "ج. دعم التطبيقات المعتمدة على موقع المكان" },
-            { en: "D. Eliminating gateways", ar: "د. إلغاء البوابات الشبكية" }
-        ],
-        correct: 2,
-        explanation: "معرفة الموقع الجغرافي تتيح تقديم خدمات وتطبيقات مرتبطة بالبيانات المكانية مثل تتبع الأهداف والاستجابة للطوارئ."
-    },
-    {
-        quiz: "Quiz 2 - MCQs",
-        qEn: "Multiple sinks in WSNs help with:",
-        qAr: "استخدام مصبات متعددة (Multiple sinks) يساهم في:",
-        options: [
-            { en: "A. Simplifying routing", ar: "أ. تبسيط التوجيه" },
-            { en: "B. Reducing node cost", ar: "ب. خفض تكلفة العقدة" },
-            { en: "C. Load balancing", ar: "ج. موازنة الأحمال على الشبكة (Load balancing)" },
-            { en: "D. Increasing single point of failure", ar: "د. زيادة نقاط الفشل الفردية" }
-        ],
-        correct: 2,
-        explanation: "تعدد المصبات يوزع استهلاك الطاقة وحجم حركة المرور بين أجزاء الشبكة المختلفة لمنع الاختناق."
+        explanation: "الـ Transceiver هو المكون المسؤول عن إرسال واستقبال الإشارات اللاسلكية."
     },
     {
         quiz: "Quiz 2 - MCQs",
@@ -479,7 +345,7 @@ const mcqQuestions = [
             { en: "D. Temperature", ar: "د. درجة الحرارة" }
         ],
         correct: 0,
-        explanation: "حساسات PIR تكتشف تغير التباين في الحرارة والأشعة تحت الحمراء الناتجة عن حركة الكائنات الحية."
+        explanation: "حساسات PIR تكتشف التغير في الأشعة تحت الحمراء الناتج عن حركة الكائنات الحية."
     },
     {
         quiz: "Quiz 2 - MCQs",
@@ -492,33 +358,7 @@ const mcqQuestions = [
             { en: "D. IN and OUT", ar: "د. IN و OUT" }
         ],
         correct: 1,
-        explanation: "منفذ Trig يُستخدم لإرسال نبضة الموجة الصوتية، ومنفذ Echo يستقبل النبضة المرتدة لتحديد المسافة."
-    },
-    {
-        quiz: "Quiz 2 - MCQs",
-        qEn: "Given 80% event detection probability, how many nodes needed for 99%?",
-        qAr: "مع احتمال اكتشاف حدث بنسبة 80% للعقدة الواحدة، كم عقدة نتاج لتحقيق نسبة اكتشاف إجمالية 99%؟",
-        options: [
-            { en: "A. 5", ar: "أ. 5 عقد" },
-            { en: "B. 2", ar: "ب. عقدتان" },
-            { en: "C. 3", ar: "ج. 3 عقد" },
-            { en: "D. 4", ar: "د. 4 عقد" }
-        ],
-        correct: 2,
-        explanation: "احتمال عدم الاكتشاف لعقدة واحدة هو (1 - 0.8) = 0.2. عند استخدام 3 عقد: (0.2)^3 = 0.008. بالتالي احتمال الاكتشاف = 1 - 0.008 = 99.2%."
-    },
-    {
-        quiz: "Quiz 2 - MCQs",
-        qEn: "In a line-following robot, which sensor helps detect black vs. white surfaces?",
-        qAr: "في الروبوت متتبع الخطوط، أي حساس يساعد في التمييز بين الأسطح البيضاء والسوداء؟",
-        options: [
-            { en: "A. IR reflectance sensor", ar: "أ. حساس انعكاس الأشعة تحت الحمراء (IR reflectance sensor)" },
-            { en: "B. UV sensor", ar: "ب. حساس UV" },
-            { en: "C. IR flame sensor", ar: "ج. حساس اللهب" },
-            { en: "D. Ultrasonic sensor", ar: "د. حساس Ultrasonic" }
-        ],
-        correct: 0,
-        explanation: "حساس الانعكاس يبعث أشعة تحت حمراء؛ اللون الأبيض يعكس معظم الضوء بينما يمتص اللون الأسود الأشعة."
+        explanation: "Trig لإرسال نبضة الموجة، و Echo يستقبل النبضة المرتدة لتحديد المسافة."
     },
     {
         quiz: "Quiz 2 - MCQs",
@@ -531,20 +371,7 @@ const mcqQuestions = [
             { en: "D. Power", ar: "د. منفذ الطاقة" }
         ],
         correct: 0,
-        explanation: "المنفذ GND هو الاختصار القياسي للتوصيل بالأرضي في الدوائر الإلكترونية."
-    },
-    {
-        quiz: "Quiz 2 - MCQs",
-        qEn: "Which sensor is used in smartphones to detect finger taps on the screen?",
-        qAr: "أي حساس يُستخدم في الهواتف الذكية للتعرف على لمسات الأصابع على الشاشة؟",
-        options: [
-            { en: "A. Touch sensor", ar: "أ. حساس اللمس (Touch sensor)" },
-            { en: "B. PIR sensor", ar: "ب. حساس PIR" },
-            { en: "C. Vibration sensor", ar: "ج. حساس الاهتزاز" },
-            { en: "D. Tilt sensor", ar: "د. حساس الإمالة" }
-        ],
-        correct: 0,
-        explanation: "حساسات اللمس (السعوية Touch sensors) هي المكون الأساسي للتعرف على لمسات شاشات الهواتف."
+        explanation: "GND هو الاختصار القياسي للتوصيل بالأرضي."
     },
     {
         quiz: "Quiz 2 - MCQs",
@@ -554,129 +381,10 @@ const mcqQuestions = [
             { en: "A. Signal processing", ar: "أ. معالجة الإشارة" },
             { en: "B. Data aggregation", ar: "ب. تجميع البيانات" },
             { en: "C. Energy balancing", ar: "ج. موازنة الطاقة" },
-            { en: "D. Network scalability", ar: "د. قابلة التوسع الشبكي (Network scalability)" }
+            { en: "D. Network scalability", ar: "د. قابلية التوسع الشبكي (Network scalability)" }
         ],
         correct: 3,
-        explanation: "مع نمو حجم الشبكة، يتعثر النهج المركزي بسبب الضغط الزائد والاختناق المروري عند العقدة المركزية."
-    },
-    {
-        quiz: "Quiz 2 - MCQs",
-        qEn: "Why is scalability non-trivial for large WSNs?",
-        qAr: "لماذا تعد قابلة التوسع أمراً حرجاً وغير بسيط للشبكات الكبيرة؟",
-        options: [
-            { en: "A. Protocol overhead grows", ar: "أ. عبء وشغل البروتوكول يزداد بشكل كبير (Protocol overhead grows)" },
-            { en: "B. Power increases", ar: "ب. الطاقة تزداد" },
-            { en: "C. Sensors become inaccurate", ar: "ج. الحساسات تصبح غير دقيقة" },
-            { en: "D. Nodes become larger", ar: "د. العقد تصبح أكبر حجم" }
-        ],
-        correct: 0,
-        explanation: "تزايد عدد العقد يرفع من حجم الرسائل وحزم التحكم (Overhead) المطلوبة لإدارة التوجيه والمزامنة."
-    },
-    {
-        quiz: "Quiz 2 - MCQs",
-        qEn: "Which metric best measures WSN effectiveness?",
-        qAr: "أي مقياس يعبر بشكل أفضل عن مدى كفاءة وفعالية شبكات WSN؟",
-        options: [
-            { en: "A. Messages sent", ar: "أ. عدد الرسائل المرسلة" },
-            { en: "B. Node uptime", ar: "ب. وقت عمل العقد" },
-            { en: "C. Events reported correctly", ar: "ج. الأحداث المبلغ عنها بشكل صحيح (Events reported correctly)" },
-            { en: "D. Bits transmitted", ar: "د. عدد البتات المنقولة" }
-        ],
-        correct: 2,
-        explanation: "الهدف الأساسي لشبكات الحساسات هو اكتشاف والإبلاغ عن الأحداث الحقيقية بالدقة المطلوبة."
-    },
-    {
-        quiz: "Quiz 2 - MCQs",
-        qEn: "For disaster monitoring, prioritize:",
-        qAr: "لمراقبة وإدارة الكوارث، يتم إعطاء الأولوية لـ:",
-        options: [
-            { en: "A. No aggregation", ar: "أ. عدم التجميع" },
-            { en: "B. Adaptive fidelity", ar: "ب. الدقة التكيفية (Adaptive fidelity)" },
-            { en: "C. Fixed high fidelity", ar: "ج. دقة ثابتة عالية" },
-            { en: "D. Single-hop only", ar: "د. القفزة الفردية فقط" }
-        ],
-        correct: 1,
-        explanation: "الدقة التكيفية تتيح رفع معدل وجودة جمع البيانات عند وقوع الكارثة وخفضه في الأوقات العادية للحفاظ على الطاقة."
-    },
-    {
-        quiz: "Quiz 2 - MCQs",
-        qEn: "Best approach for tracking mobile events:",
-        qAr: "أفضل نهج لتتبع الأحداث المتحركة في المكان هو:",
-        options: [
-            { en: "A. Fixed schedules", ar: "أ. الجداول الثابتة" },
-            { en: "B. Centralized control", ar: "ب. التحكم المركزي" },
-            { en: "C. Static routing", ar: "ج. التوجيه الثابت" },
-            { en: "D. Dynamic responsibility", ar: "د. المسؤولية الديناميكية (Dynamic responsibility)" }
-        ],
-        correct: 3,
-        explanation: "تتغير العقدة المسؤولة ديناميكياً لتتبع مسار وتغييرات موقع الحدث المتحرك."
-    },
-    {
-        quiz: "Quiz 2 - MCQs",
-        qEn: "Best data-centric method for industrial monitoring:",
-        qAr: "أفضل طريقة متمركزة حول البيانات للمراقبة الصناعية هي:",
-        options: [
-            { en: "A. Publish/subscribe", ar: "أ. نموذج النشر/الاشتراك (Publish/subscribe)" },
-            { en: "B. Central database", ar: "ب. قاعدة بيانات مركزية" },
-            { en: "C. Static addressing", ar: "ج. العنونة الثابتة" },
-            { en: "D. Raw data flooding", ar: "د. الإغراق بالبيانات الخام" }
-        ],
-        correct: 0,
-        explanation: "نموذج Publish/Subscribe يسمح للتطبيقات بالاشتراك فقط في أنواع القراءات الحساسة التي تهمها."
-    },
-    {
-        quiz: "Quiz 2 - MCQs",
-        qEn: "What are ISM bands?",
-        qAr: "ما هي نطاقات ترددات ISM؟",
-        options: [
-            { en: "A. Satellite", ar: "أ. ترددات الأقمار الصناعية" },
-            { en: "B. Licensed cellular", ar: "ب. الترددات الخلوية المرخصة" },
-            { en: "C. License-free", ar: "ج. ترددات غير مرخصة مجانية (License-free)" },
-            { en: "D. Military", ar: "د. الترددات العسكرية" }
-        ],
-        correct: 2,
-        explanation: "نطاقات ISM (Industrial, Scientific, and Medical) غير مرخصة ومتاحة للاستخدام العام دون الحاجة لتراخيص."
-    },
-    {
-        quiz: "Quiz 2 - MCQs",
-        qEn: "What innovation would most improve WSN scalability?",
-        qAr: "أي ابتكار يساهم بشكل أكبر في تحسين قابلية التوسع لشبكات WSN؟",
-        options: [
-            { en: "A. Higher transmission power", ar: "أ. زيادة طاقة الإرسال" },
-            { en: "B. Larger batteries", ar: "ب. بطاريات أكبر" },
-            { en: "C. Better routing protocols", ar: "ج. بروتوكولات توجيه أفضل وأكفأ" },
-            { en: "D. More powerful nodes", ar: "د. عقد ذات معالجة أقوى" }
-        ],
-        correct: 2,
-        explanation: "بروتوكولات التوجيه الذكية والموزعة تقلل من تراكم الرسائل وتتيح التوسع دون تدهور الأداء."
-    },
-    {
-        quiz: "Quiz 2 - MCQs",
-        qEn: "How to handle overlapping event regions?",
-        qAr: "كيف يتم التعامل مع المناطق التي تتداخل فيها تغطية الأحداث بين أكثر من عقدة؟",
-        options: [
-            { en: "A. Collaborative sensing", ar: "أ. الاستشعار التعاوني (Collaborative sensing)" },
-            { en: "B. Random selection", ar: "ب. الاختيار العشوائي" },
-            { en: "C. Single node responsibility", ar: "ج. مسؤولية عقدة واحدة" },
-            { en: "D. Ignore overlaps", ar: "د. تجاهل التداخل" }
-        ],
-        correct: 0,
-        explanation: "الاستشعار التعاوني بين العقد المجاورة يتيح دمج القراءات لرفع الدقة وتقليل تكرار الرسائل."
-    },
-
-    // --- Quiz 3 MCQs ---
-    {
-        quiz: "Quiz 3 - MCQs",
-        qEn: "The accuracy of Time synchronization algorithms depends on:",
-        qAr: "دقة خوارزميات مزامنة الوقت تعتمد بشكل مباشر على:",
-        options: [
-            { en: "A. Number of packet errors", ar: "أ. عدد أخطاء الحزم" },
-            { en: "B. Number of retransmission times", ar: "ب. عدد مرات إعادة الإرسال" },
-            { en: "C. Speed in Tasks achievement", ar: "ج. السرعة في إنجاز المهام" },
-            { en: "D. The delay between reception of last bit and timestamping", ar: "د. التأخير بين استقبال آخر بت في الحزمة ووقت تسجيل الطابع الزمني (Timestamp)" }
-        ],
-        correct: 3,
-        explanation: "تذبذب زمن التأخير (Jitter/Delay) بين لحظة وصول الحزمة وتسجيل الطابع الزمني هو المسبب الرئيسي للخطأ في المزامنة."
+        explanation: "النهج المركزي يتعثر مع نمو حجم الشبكة بسبب الاختناق عند العقدة المركزية."
     },
     {
         quiz: "Quiz 3 - MCQs",
@@ -686,60 +394,10 @@ const mcqQuestions = [
             { en: "A. Localization protocols", ar: "أ. بروتوكولات تحديد الموقع" },
             { en: "B. Positioning Protocols", ar: "ب. بروتوكولات التمركز" },
             { en: "C. Protocols based on receiver/receiver synchronization", ar: "ج. بروتوكولات المزامنة بين المستقبل والمستقبل" },
-            { en: "D. Time Synchronization protocols", ar: "د. بروتوكولات مزامنة الوقت (Time Synchronization protocols)" }
+            { en: "D. Time Synchronization protocols", ar: "د. بروتوكولات مزامنة الوقت" }
         ],
         correct: 3,
-        explanation: "بروتوكول LTS هو أحد أبرز بروتوكولات مزامنة الوقت الخفيفة (Time Synchronization Protocols)."
-    },
-    {
-        quiz: "Quiz 3 - MCQs",
-        qEn: "In Time Sync, if distance d=3m and time difference is 0.002s, then angle of arrival (in rad) is:",
-        qAr: "في مزامنة الوقت، إذا كانت المسافة d=3m والفرق الزمني 0.002 ثانية، فإن زاوية الوصول (Angle of arrival) تكون:",
-        options: [
-            { en: "A. 0.3546", ar: "أ. 0.3546" },
-            { en: "B. 0.222", ar: "ب. 0.222" },
-            { en: "C. 0.125", ar: "ج. 0.125" },
-            { en: "D. 0.6324", ar: "د. 0.6324" }
-        ],
-        correct: 1,
-        explanation: "باستخدام معادلة قياس زاوية الوصول المستندة للسرعة والمسافة بين الميكروفونات/الحساسات: sin(theta) = (v * dt) / d = (343 * 0.002) / 3 = 0.686 / 3 = 0.228 rad (تقريباً 0.222)."
-    },
-    {
-        quiz: "Quiz 3 - MCQs",
-        qEn: "'Wireless can be applied on large scale...' - Is this a DISADVANTAGE of WSNs?",
-        qAr: "'إمكانية تطبيق الشبكات اللاسلكية على نطاق واسع في التعدين والرعاية الصحية...' هل تعتبر هذه الإفادة من عيوب (Disadvantages) شبكات WSN؟",
-        options: [
-            { en: "A. False", ar: "أ. خطأ (False) - هذه تعتبر ميزة وليست عيباً" },
-            { en: "B. True", ar: "ب. صح (True)" }
-        ],
-        correct: 0,
-        explanation: "تعدد الاستخدامات والتطبيق واسع النطاق هو ميزة وفائدة رئيسية (Advantage) وليس عيباً."
-    },
-    {
-        quiz: "Quiz 3 - MCQs",
-        qEn: "What tradeoff exists between delay and energy?",
-        qAr: "ما هي المقايضة (Trade-off) الموجودة بين التأخير (Delay) واستهلاك الطاقة؟",
-        options: [
-            { en: "A. Lower delay always saves energy", ar: "أ. التأخير الأقل يوفر الطاقة دائماً" },
-            { en: "B. Energy increases delay", ar: "ب. الطاقة تزيد التأخير" },
-            { en: "C. Higher delay can save energy", ar: "ج. التأخير الأعلى يمكن أن يوفر في استهلاك الطاقة (Higher delay can save energy)" },
-            { en: "D. Delay doesn't affect energy", ar: "د. التأخير لا يؤثر على الطاقة" }
-        ],
-        correct: 2,
-        explanation: "تأخير إرسال الحزم وتجميعها يسمح بالعناية بجدولة النوم (Duty cycling) وإرسالها دفعة واحدة مما يوفر طاقة البث."
-    },
-    {
-        quiz: "Quiz 3 - MCQs",
-        qEn: "For energy efficiency, prioritize:",
-        qAr: "لتحقيق أقصى كفاءة في استخدام الطاقة، يجب إعطاء الأولوية لـ:",
-        options: [
-            { en: "A. Ignoring transmission power", ar: "أ. تجاهل طاقة الإرسال" },
-            { en: "B. Balancing all node power", ar: "ب. موازنة استهلاك الطاقة بين جميع العقد" },
-            { en: "C. Maximizing single node life", ar: "ج. أقصى زيادة لعمر عقدة واحدة" },
-            { en: "D. Minimizing hops", ar: "د. تقليل القفزات" }
-        ],
-        correct: 1,
-        explanation: "موازنة الطاقة بين العقد يضمن عدم انهيار عقد معينة قبل غيرها مما يعطل اتصالية الشبكة ككل."
+        explanation: "بروتوكول LTS هو أحد أبرز بروتوكولات مزامنة الوقت."
     }
 ];
 
@@ -751,57 +409,10 @@ const essayQuestions = [
         answer: "A sensor network is an infrastructure comprised of sensing (measuring), computing, and communication elements that gives an administrator the ability to instrument, observe, and react to events and phenomena in a specified environment."
     },
     {
-        quiz: "Quiz 1 - Essay Question",
-        qEn: "Q2: Sensors can be roughly categorized into three categories ... State briefly?",
-        qAr: "س2: يمكن تصنيف الحساسات إجمالاً إلى ثلاثة أنواع... اذكرها باختصار؟",
-        answer: "1. Passive, omnidirectional sensors: These sensors can measure a physical quantity at the point of the sensor node without manipulating the environment by active probing.
-2. Passive, narrow-beam sensors: These sensors are passive as well but have a well-defined notion of direction of measurement.
-3. Active sensors: This last group of sensors actively probes the environment."
-    },
-    {
-        quiz: "Quiz 1 - Essay Question",
-        qEn: "Q3: In Time Synchronization, Compare Between LTS and RBS?",
-        qAr: "س3: قارن بين بروتوكول LTS وبروتوكول RBS في مزامنة الوقت؟",
-        answer: "1. Lightweight time synchronization protocol (LTS):
-Attempts to synchronize the clocks of a sensor network to the clocks held by certain reference nodes (like GPS receivers). It allows trade-offs between energy expenditure and achievable accuracy.
-
-2. Reference broadcast synchronization (RBS):
-Consists of two components. In the first, a set of nodes within a single broadcast domain estimate their peers' clocks. The second relates timestamps between distant nodes across multiple broadcast domains."
-    },
-    {
         quiz: "Quiz 2 - Essay Question",
-        qEn: "Q1: State Localization and positioning Approaches (in details)?",
-        qAr: "س1: اذكر أساليب وطرق تحديد الموقع والتمركز (in details)؟",
-        answer: "1. Proximity:
-The simplest technique exploiting the finite range of wireless communication to decide if a node is in proximity of an anchor.
-
-2. Trilateration and triangulation:
-Extracting geometric relationships (distances/angles) between nodes to compute relative/absolute coordinates.
-
-3. Determining distances:
-Estimating distances to anchor nodes using facilities like radio signals (RSSI, ToA, TDoA)."
-    },
-    {
-        quiz: "Quiz 2 - Essay Question",
-        qEn: "Q2: Compare between Protocols of time synchronization (categories and Protocols) briefly?",
-        qAr: "س2: قارن بين فئات بروتوكولات مزامنة الوقت؟",
-        answer: "1. Sender/Receiver Synchronization:
-One node (receiver) exchanges packets with another (sender) to sync. Requires bidirectional links.
-Examples: LTS, TPSN.
-
-2. Receiver/Receiver Synchronization:
-Multiple receivers of the same timestamped packet synchronize with each other, not with the sender.
-Examples: RBS, HRTS."
-    },
-    {
-        quiz: "Quiz 3 - Essay Question",
-        qEn: "Q4: In Time Synchronization, compare between TPSN protocol and HRTS protocol?",
-        qAr: "س4: قارن بين بروتوكولي TPSN و HRTS في مزامنة الوقت؟",
-        answer: "• Timing-sync protocol for sensor networks (TPSN):
-Pair-wise, sender/receiver protocol. Operates asymmetrically (Node i syncs to Node j). Builds a spanning tree where each node knows its level and parent.
-
-• Hierarchy referencing time synchronization (HRTS):
-Receiver/receiver technique synchronizing all nodes in a broadcast domain and constructing a tree for network-wide sync, triggered periodically by the root."
+        qEn: "Q1: State Localization and positioning Approaches?",
+        qAr: "س1: اذكر أساليب وطرق تحديد الموقع والتمركز؟",
+        answer: "1. Proximity: Finite range of wireless communication.\n2. Trilateration and triangulation: Geometric relationships (distances/angles).\n3. Determining distances: RSSI, ToA, TDoA."
     }
 ];
 
@@ -810,7 +421,6 @@ function renderQuiz() {
     document.getElementById('total').innerText = mcqQuestions.length;
     let currentQuizSection = "";
 
-    // Render MCQs
     mcqQuestions.forEach((q, qIndex) => {
         if (q.quiz !== currentQuizSection) {
             currentQuizSection = q.quiz;
@@ -822,7 +432,6 @@ function renderQuiz() {
 
         const card = document.createElement('div');
         card.className = 'question-card';
-        card.id = `q-card-${qIndex}`;
 
         let optionsHTML = "";
         q.options.forEach((opt, optIndex) => {
@@ -838,9 +447,7 @@ function renderQuiz() {
             <div class="question-num">سؤال اختيارات ${qIndex + 1}</div>
             <div class="question-text-en">${q.qEn}</div>
             <div class="question-text-ar">${q.qAr}</div>
-            <ul class="options-list">
-                ${optionsHTML}
-            </ul>
+            <ul class="options-list">${optionsHTML}</ul>
             <div class="explanation" id="exp-${qIndex}">
                 <strong>الشرح والسبب العلمي:</strong> ${q.explanation}
             </div>
@@ -848,16 +455,14 @@ function renderQuiz() {
         container.appendChild(card);
     });
 
-    // Render Essay Questions
-    const essaySectionHeader = document.createElement('h2');
-    essaySectionHeader.className = 'quiz-section-title';
-    essaySectionHeader.innerText = "أسئلة المقالي (Short Answer & Essay Questions)";
-    container.appendChild(essaySectionHeader);
+    const essayHeader = document.createElement('h2');
+    essayHeader.className = 'quiz-section-title';
+    essayHeader.innerText = "أسئلة المقالي (Short Answer & Essay)";
+    container.appendChild(essayHeader);
 
     essayQuestions.forEach((eq, eqIndex) => {
         const card = document.createElement('div');
         card.className = 'question-card';
-
         card.innerHTML = `
             <div class="question-num">${eq.quiz}</div>
             <div class="question-text-en">${eq.qEn}</div>
@@ -900,11 +505,7 @@ function selectOption(qIndex, selectedIndex) {
 
 function toggleEssayAnswer(index) {
     const ansElem = document.getElementById(`essay-ans-${index}`);
-    if (ansElem.style.display === 'block') {
-        ansElem.style.display = 'none';
-    } else {
-        ansElem.style.display = 'block';
-    }
+    ansElem.style.display = (ansElem.style.display === 'block') ? 'none' : 'block';
 }
 
 function resetQuiz() {
